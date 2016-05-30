@@ -13,6 +13,9 @@ Deze visualisatie bekijkt de man-vrouw verhouding in het onderzoek in Europa ove
 - Scatterplot van alle landen, die het percentage vrouwen werkzaam in de wetenschap tegenover het percentage van vrouwen die een tertiaire opleiding hebben afgerond weergeeft. Bij klikken op een land wordt het bolletje van dit land in de scatterplot gehighlight.
 - Optionele toevoeging: Lijst met vrouwelijke wetenschappers afkomstig uit het land waarop geklikt is. Naam, geboortejaar, vakgebied en eventuele onderscheiding(en)
 
+Eerste sketch: 
+![](doc/Sketch_1.jpg)
+
 #### Databases
 
 - Unesco Institute for Statistics
