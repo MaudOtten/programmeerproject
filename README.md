@@ -36,3 +36,6 @@ Een eerdere visualizatie die als inspiratie heeft gediend is afkomstig van Unesc
 #### Minimum Viable Product
 
 De MVP zal bestaan uit de kaart van Europa, waar gekozen kan worden voor data van meerdere jaren (mbv een dropdown menu / checking boxes / slider). Bij klikken van een land wordt de barchart weergegeven, met data over de sector 'higher education'. Via dropdown menu kan voor een andere sector worden gekozen. Ook wordt een scatterplot laten zien waarop voor alle landen de data van het meest recente weergegeven jaar wordt weergegeven. Bij hover-over wordt de naam van het land weergegeven. Dit alles zal door een coherent verhaal omgeven worden en een geheel vormen.
+
+# day 2
+Besloten om mijn originele verhaling vast te houden (laten zien van de gender gap). Vervolgens eerdere HTML en JS files opgedoken om weer even het geheugen op te frissen. Ook eerste poging gedaan tot data processing in Python. Hier moet ik morgen een beter systeem voor bedenken.
