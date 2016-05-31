@@ -1,4 +1,4 @@
-# programmeerproject
+# Programmeerproject
 
 ## Vrouwen in het onderzoek: waar zijn ze?
 
