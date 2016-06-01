@@ -13,3 +13,6 @@ Basic sketch van de indeling van deze elementen over de pagina:
 ![](doc/Sketch_2.jpg)
 
 Ik heb een overzicht schets gemaakt (DESIGN.md) met de verschillende scripts, waar wat wordt aangeroepen en welke elementen in de main page HTML file al zullen staan. Ook heb ik al een aantal dingen geprobeerd mbt stijl en de slider knop ingebouwd (library d3.slider.js).
+
+Inspiratie voor slider en play-button: http://bl.ocks.org/darrenjaworski/5544599
+Slider examples, voor evt variatie: http://thematicmapping.org/playground/d3/d3.slider/
