@@ -7,6 +7,10 @@
 	Part of final programming project 2016.
 */
 
+d3.select('#slider').call(d3.slider().axis(true).value(50).step(5).on("slide", function(evt, value) {
+d3.select('#slider3textmin').text(value[ 0 ]);
+}));
+
 // initiate map
 var Map = new Datamap({
 	
