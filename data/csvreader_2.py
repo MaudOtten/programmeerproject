@@ -31,7 +31,7 @@ country_codes = [
     ["bj", "BEN", "Benin"],
     ["bm", "BMU", "Bermuda"],
     ["bt", "BTN", "Bhutan"],
-    ["bo", "BOL", "Bolivia, Plurinational State of"],
+    ["bo", "BOL", "Bolivia Plurinational State of"],
     ["bq", "BES", "Bonaire, Sint Eustatius and Saba"],
     ["ba", "BIH", "Bosnia and Herzegovina"],
     ["bw", "BWA", "Botswana"],
@@ -56,7 +56,7 @@ country_codes = [
     ["co", "COL", "Colombia"],
     ["km", "COM", "Comoros"],
     ["cg", "COG", "Congo"],
-    ["cd", "COD", "Congo, the Democratic Republic of the"],
+    ["cd", "COD", "Congo Democratic Republic of the"],
     ["ck", "COK", "Cook Islands"],
     ["cr", "CRI", "Costa Rica"],
     ["ci", "CIV", "Cote d'Ivoire"],
@@ -109,7 +109,7 @@ country_codes = [
     ["is", "ISL", "Iceland"],
     ["in", "IND", "India"],
     ["id", "IDN", "Indonesia"],
-    ["ir", "IRN", "Iran, Islamic Republic of"],
+    ["ir", "IRN", "Iran (Islamic Republic of)"],
     ["iq", "IRQ", "Iraq"],
     ["ie", "IRL", "Ireland"],
     ["im", "IMN", "Isle of Man"],
@@ -123,7 +123,7 @@ country_codes = [
     ["ke", "KEN", "Kenya"],
     ["ki", "KIR", "Kiribati"],
     ["kp", "PRK", "Korea, Democratic People's Republic of"],
-    ["kr", "KOR", "Korea, Republic of"],
+    ["kr", "KOR", "Republic of Korea"],
     ["kw", "KWT", "Kuwait"],
     ["kg", "KGZ", "Kyrgyzstan"],
     ["la", "LAO", "Lao People's Democratic Republic"],
@@ -136,7 +136,7 @@ country_codes = [
     ["lt", "LTU", "Lithuania"],
     ["lu", "LUX", "Luxembourg"],
     ["mo", "MAC", "Macao"],
-    ["mk", "MKD", "Macedonia, the former Yugoslav Republic of"],
+    ["mk", "MKD", "The former Yugoslav Republic of Macedonia"],
     ["mg", "MDG", "Madagascar"],
     ["mw", "MWI", "Malawi"],
     ["my", "MYS", "Malaysia"],
@@ -150,7 +150,7 @@ country_codes = [
     ["yt", "MYT", "Mayotte"],
     ["mx", "MEX", "Mexico"],
     ["fm", "FSM", "Micronesia, Federated States of"],
-    ["md", "MDA", "Moldova, Republic of"],
+    ["md", "MDA", "Republic of Moldova"],
     ["mc", "MCO", "Monaco"],
     ["mn", "MNG", "Mongolia"],
     ["me", "MNE", "Montenegro"],
@@ -174,7 +174,7 @@ country_codes = [
     ["om", "OMN", "Oman"],
     ["pk", "PAK", "Pakistan"],
     ["pw", "PLW", "Palau"],
-    ["ps", "PSE", "Palestine, State of"],
+    ["ps", "PSE", "Palestine"],
     ["pa", "PAN", "Panama"],
     ["pg", "PNG", "Papua New Guinea"],
     ["py", "PRY", "Paraguay"],
@@ -190,7 +190,7 @@ country_codes = [
     ["ru", "RUS", "Russian Federation"],
     ["rw", "RWA", "Rwanda"],
     ["bl", "BLM", "Saint Barthelemy"],
-    ["sh", "SHN", "Saint Helena, Ascension and Tristan da Cunha"],
+    ["sh", "SHN", "Saint Helena"],
     ["kn", "KNA", "Saint Kitts and Nevis"],
     ["lc", "LCA", "Saint Lucia"],
     ["mf", "MAF", "Saint Martin (French part)"],
@@ -224,7 +224,7 @@ country_codes = [
     ["sy", "SYR", "Syrian Arab Republic"],
     ["tw", "TWN", "Taiwan, Province of China"],
     ["tj", "TJK", "Tajikistan"],
-    ["tz", "TZA", "Tanzania, United Republic of"],
+    ["tz", "TZA", "United Republic of Tanzania"],
     ["th", "THA", "Thailand"],
     ["tl", "TLS", "Timor-Leste"],
     ["tg", "TGO", "Togo"],
@@ -245,7 +245,7 @@ country_codes = [
     ["uy", "URY", "Uruguay"],
     ["uz", "UZB", "Uzbekistan"],
     ["vu", "VUT", "Vanuatu"],
-    ["ve", "VEN", "Venezuela, Bolivarian Republic of"],
+    ["ve", "VEN", "Venezuela (Bolivarian Republic of)"],
     ["vn", "VNM", "Viet Nam"],
     ["vg", "VGB", "Virgin Islands, British"],
     ["vi", "VIR", "Virgin Islands, U.S."],
@@ -257,7 +257,7 @@ country_codes = [
 
 # open readfile
 import csv
-dataFile = open('All_in_one.csv', 'rb')
+dataFile = open('new_complete.csv', 'rb')
 Reader = csv.reader(dataFile)
 data = list(Reader)
 
@@ -266,26 +266,26 @@ country_name = ""
 counter = 0
 
 # set all data to null
-female_in_research = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-birth_rate = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-female_work = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-expences_education = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+female_in_research = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+birth_rate = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+female_work = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+expences_education = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-total_nature = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-total_engineering = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-total_agriculture = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-total_medicine = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-total_social = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-total_humanities = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-total_notspecified = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+total_nature = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+total_engineering = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+total_agriculture = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+total_medicine = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+total_social = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+total_humanities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+total_notspecified = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-female_nature = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-female_engineering = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-female_agriculture = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-female_medicine = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-female_social = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-female_humanities = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-female_notspecified = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+female_nature = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+female_engineering = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+female_agriculture = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+female_medicine = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+female_social = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+female_humanities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+female_notspecified = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
 # start output string
@@ -296,52 +296,6 @@ json = "data: {"
 # in een for-loop is de each de inhoud van die iteratie (bv de row in data). De index ervan is data.index(row)
 
 for row in data[1:]:
-		
-	if row[0] is not "":
-		
-		countryCode = "Unknown";
-		country_name = str(row[0])
-		
-		for code in country_codes:
-			if country_name == country_codes[country_codes.index(code)][2]:
-				countryCode = country_codes[country_codes.index(code)][1]
-				print "TJAKKA"
-				print countryCode
-
-		country_name = "\"" + str(row[0]) + "\""
-		
-		json += " \"" + str(countryCode) + "\" : { "
-		
-		for year in years:
-			num = years.index(year)
-			json += str(year) + " : {  female_in_research: " + str(female_in_research[num]) + ", total_nature: " + str(total_nature[num]) + ", female_nature: " + str(female_nature[num]) + ", total_engineering: " + str(total_engineering[num]) + ", female_engineering: " + str(female_engineering[num]) + ", total_agriculture: " + str(total_agriculture[num]) + ", female_agriculture: " + str(female_agriculture[num]) + ", total_medicine: " + str(total_medicine[num]) + ", female_medicine: " + str(female_medicine[num]) + ", total_social: " + str(total_social[num]) + ", female_social: " + str(female_social[num]) + ", total_humanities: " + str(total_humanities[num]) + ", female_humanities: " + str(female_humanities[num]) + ", total_notspecified: " + str(total_notspecified[num]) + ", female_notspecified: " + str(female_notspecified[num]) + "}, "
-
-		json = json[0:-2] + "}, "
-
-		if counter is not 0:
-			# set all data to null
-			female_in_research = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			birth_rate = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			female_work = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			expences_education = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-
-			total_nature = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			total_engineering = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			total_agriculture = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			total_medicine = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			total_social = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			total_humanities = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			total_notspecified = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-
-			female_nature = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			female_engineering = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			female_agriculture = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			female_medicine = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			female_social = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			female_humanities = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-			female_notspecified = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-	
-	counter += 1
 	
 	if row[1] == "Researchers (FTE) - % Female":
 		female_in_research[0] = row[2]
@@ -358,75 +312,140 @@ for row in data[1:]:
 		female_in_research[11] = row[13]
 		female_in_research[12] = row[14]
 	
-	elif row[1] == "Researchers (HC) - % Female":
-		if female_in_research[0] is "":
+	if row[1] == "Researchers (HC) - % Female":
+		if female_in_research[0] is 0:
 			female_in_research[0] = row[2]
-		if female_in_research[1] is "":	
+		if female_in_research[1] is 0:	
 			female_in_research[1] = row[3]
-		if female_in_research[2] is "":
+		if female_in_research[2] is 0:
 			female_in_research[2] = row[4]
-		if female_in_research[3] is "":
+		if female_in_research[3] is 0:
 			female_in_research[3] = row[5]
-		if female_in_research[4] is "":
+		if female_in_research[4] is 0:
 			female_in_research[4] = row[6]
-		if female_in_research[5] is "":
+		if female_in_research[5] is 0:
 			female_in_research[5] = row[7]
-		if female_in_research[6] is "":
+		if female_in_research[6] is 0:
 			female_in_research[6] = row[8]
-		if female_in_research[7] is "":
+		if female_in_research[7] is 0:
 			female_in_research[7] = row[9]
-		if female_in_research[8] is "":
+		if female_in_research[8] is 0:
 			female_in_research[8] = row[10]
-		if female_in_research[9] is "":
+		if female_in_research[9] is 0:
 			female_in_research[9] = row[11]
-		if female_in_research[10] is "":
+		if female_in_research[10] is 0:
 			female_in_research[10] = row[12]
-		if female_in_research[11] is "":
+		if female_in_research[11] is 0:
 			female_in_research[11] = row[13]
-		if female_in_research[12] is "":
+		if female_in_research[12] is 0:
 			female_in_research[12] = row[14]
-			
+	
+	
 	if row[1] == "Researchers (FTE) - Natural sciences %":
-		total_nature[0:12] = row[2:14]
+		for value in range(2, 15):
+			total_nature[value - 2] = row[value]
 	
 	if row[1] == "Researchers (FTE) - Engineering and technology %":
-		total_engineering[0:12] = row[2:14]
+		for value in range(2, 15):
+			total_engineering[value - 2] = row[value]
 		
 	if row[1] == "Researchers (FTE) - Medical and health sciences %":
-		total_medicine[0:12] = row[2:14]
+		for value in range(2, 15):
+			total_medicine[value - 2] = row[value]
 	
 	if row[1] == "Researchers (FTE) - Agricultural sciences %":
-		total_agriculture[0:12] = row[2:14]
+		for value in range(2, 15):
+			total_agriculture[value - 2] = row[value]
 	
 	if row[1] == "Researchers (FTE) - Social sciences %":
-		total_social[0:12] = row[2:14]
+		for value in range(2, 15):
+			total_social[value - 2] = row[value]
 	
 	if row[1] == "Researchers (FTE) - Humanities %":
-		total_humanities[0:12] = row[2:14]
+		for value in range(2, 15):
+			total_humanities[value - 2] = row[value]
 		
 	if row[1] == "Researchers (FTE) - Not specified fields %":
-		total_notspecified[0:12] = row[2:14]
+		for value in range(2, 15):
+			total_notspecified[value - 2] = row[value]
 		
 	if row[1] == "Female researchers as a percentage of total researchers (FTE) - Natural sciences":
-		female_nature[0:12] = row[2:14]
+		for value in range(2, 15):
+			female_nature[value - 2] = row[value]
 	
 	if row[1] == "Female researchers as a percentage of total researchers (FTE) - Engineering and technology":
-		female_engineering[0:12] = row[2:14]
+		for value in range(2, 15):
+			female_engineering[value - 2] = row[value]
 	
 	if row[1] == "Female researchers as a percentage of total researchers (FTE) - Medical and health sciences":
-		female_medicine[0:12] = row[2:14]
+		for value in range(2, 15):
+			female_medicine[value - 2] = row[value]
 	
 	if row[1] == "Female researchers as a percentage of total researchers (FTE) - Agricultural sciences":
-		female_agriculture[0:12] = row[2:14]
+		for value in range(2, 15):
+			female_medicine[value - 2] = row[value]
 	
 	if row[1] == "Female researchers as a percentage of total researchers (FTE) - Social sciences":
-		female_social[0:12] = row[2:14]
+		for value in range(2, 15):
+			female_social[value - 2] = row[value]
 	
 	if row[1] == "Female researchers as a percentage of total researchers (FTE) - Humanities":
-		female_humanities[0:12] = row[2:14]
+		for value in range(2, 15):
+			female_humanities[value - 2] = row[value]
 	
 	if row[1] == "Female researchers as a percentage of total researchers (FTE) - Not specified fields":
-		female_notspecified[0:12] = row[2:14]
+		for value in range(2, 15):
+			female_notspecified[value - 2] = row[value]
+			
+	
+	if row[0] is not "":
+		
+		countryCode = "Unknown";
+		country_name = str(row[0])
+		
+		for code in country_codes:
+			if country_name == country_codes[country_codes.index(code)][2]:
+				countryCode = country_codes[country_codes.index(code)][1]
+				break
+
+		country_name = "\"" + str(row[0]) + "\""
+		
+		# Country code check
+		#if countryCode == "Unknown":
+		#	print country_name
+		
+		json += " \"" + str(countryCode) + "\" : { "
+		
+		for year in years:
+			num = years.index(year)
+			json += str(year) + " : {  female_in_research: " + str(female_in_research[num]) + ", total_nature: " + str(total_nature[num]) + ", female_nature: " + str(female_nature[num]) + ", total_engineering: " + str(total_engineering[num]) + ", female_engineering: " + str(female_engineering[num]) + ", total_agriculture: " + str(total_agriculture[num]) + ", female_agriculture: " + str(female_agriculture[num]) + ", total_medicine: " + str(total_medicine[num]) + ", female_medicine: " + str(female_medicine[num]) + ", total_social: " + str(total_social[num]) + ", female_social: " + str(female_social[num]) + ", total_humanities: " + str(total_humanities[num]) + ", female_humanities: " + str(female_humanities[num]) + ", total_notspecified: " + str(total_notspecified[num]) + ", female_notspecified: " + str(female_notspecified[num]) + "}, "
+
+		json = json[0:-2] + "}, "
+
+		if counter is not 0:
+			# set all data to null
+			female_in_research = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			birth_rate = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			female_work = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			expences_education = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+			total_nature = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			total_engineering = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			total_agriculture = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			total_medicine = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			total_social = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			total_humanities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			total_notspecified = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+			female_nature = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			female_engineering = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			female_agriculture = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			female_medicine = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			female_social = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			female_humanities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			female_notspecified = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	
+	counter += 1
 
 json = json[0:-2] + "}"
 
