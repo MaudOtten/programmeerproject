@@ -14,13 +14,6 @@ d3.select('#slider').call(d3.slider().axis(true).value(50).step(5).on("slide", f
 d3.select('#slider3textmin').text(value[ 0 ]);
 }));
 
-d3.json("data.json", function(error, json) {
-	if (error) return console.warn(error);
-
-	data = json;
-	console.log(data);
-});
-
 // initiate world map
 var Map = new Datamap({
 	
@@ -55,7 +48,7 @@ var Map = new Datamap({
 	// fillcolors range per 20%, default color set to black
 	fills: {
 		
-		"0 - 20%": '#fedde9', // 0 - 20 %
+		"< 10%": '#fedde9', // 0 - 20 %
 		"20 - 40%": '#fdabc8', // 20 - 40 %
 		"40 - 60%": '#c5a4f8', // 40 - 60 %
 		"60 - 80%": '#a775f4', // 60 - 80 %
@@ -63,7 +56,8 @@ var Map = new Datamap({
 		defaultFill: '#000' // Rest of world
 	},
 	
-	data: data
+	dataUrl: data_maps_2000,
+	data: {}
 	});
  
 /* // set legend, title and labels
