@@ -7,17 +7,28 @@
 	Part of final programming project 2016.
 */
 
+// time slider
 d3.select('#slider').call(d3.slider().axis(true).value(50).step(5).on("slide", function(evt, value) {
 d3.select('#slider3textmin').text(value[ 0 ]);
 }));
 
-// initiate map
+// initiate world map
 var Map = new Datamap({
 	
 	// this block of code is mostly copied from http://bl.ocks.org/markmarkoh/4127667, and adjusted
 	// highlighting a country when hovered over by mouse 
-	element: document.getElementById("container"),
+	element: document.getElementById("worldmap"),
+	
+	// function for click event to facilitate second visualization (bar chart)
+	// copied from https://github.com/markmarkoh/datamaps, section "Events"
+	done: function(datamap) {
+		datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+			createBarchart(geography.id);
+		});
+	},
+	
 	scope: 'world',
+	
 	geography_config: {
 		borderColor: 'rgba(255,255,255,0.3)',
 		highlightBorderColor: 'rgba(0,0,0,0.5)',
@@ -378,9 +389,9 @@ var Map = new Datamap({
 		"ZWE" :{ fillKey: "0 - 20%", value: 19.89}}
  });
  
-// set legend, title and labels
+/* // set legend, title and labels
 Map.legend({
-	legendTitle : "% Internet Users",
+	legendTitle : "% Female researchers",
 	defaultFillName: "No data",
 	labels: {
 		q0: "one",
@@ -390,5 +401,88 @@ Map.legend({
 		q4: "five",
 		q5: "six,"
 	},
-});
+}); */
+
+// create bar chart for clicked country
+function createBarchart(countrycode){
+	// remove previous bar chart
+	d3.select("#barchart").selectAll("*").remove();
+
+	// define margin, range and scale values
+	var margin = {top: 20, right: 20, bottom: 30, left: 60},
+	width = 960 - margin.left - margin.right,
+	height = 450 - margin.top - margin.bottom;
+
+	var x = d3.scale.ordinal()
+	.rangeRoundBands([0, width], .1);
+
+	var y = d3.scale.linear()
+	.range([height, 0]);
+
+	var xAxis = d3.svg.axis()
+	.scale(x)
+	.orient("bottom");
+
+	var yAxis = d3.svg.axis()
+	.scale(y)
+	.orient("left")
+	.ticks(10, "mm");
 	
+	var data = [28, 30, 40];
+
+	// define width and height
+	var width = 200,
+	height = 150;
+
+	// set x and y
+	var x = d3.scale.ordinal()
+	.rangeRoundBands([0, width], .1);
+
+	var y = d3.scale.linear()
+	.range([height, 0]);
+
+	// give values to chart
+	var chart = d3.select("#barchart")
+	.attr("width", width)
+	.attr("height", height);
+
+	// set y domain
+	y.domain([0, d3.max(data, function(d) { return d; })]);
+	
+	// define width of bar
+	var barWidth = width / data.length;
+	
+	// add data and transform to upright chart
+	var bar = chart.selectAll("g")
+	.data(data)
+		.enter().append("g")
+		.attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
+	
+	// create x-axis
+	chart.append("g")
+	.attr("class", "x axis")
+	.attr("transform", "translate(0," + height + ")")
+	.call(xAxis);
+	
+	// append rect for each value
+	bar.append("rect")
+		.attr("y", function(d) { return y(d); })
+		.attr("height", function(d) { return height - y(d); })
+		.attr("width", barWidth - 5)
+		.append("title");
+	
+	console.log("bar appended")
+	
+	// give text to each bar
+	bar.append("text")
+		.attr("x", barWidth / 2)
+		.attr("y", function(d) { return y(d) + 3; })
+		.attr("dy", ".75em")
+		.text(function(d) { return d; });
+		
+	console.log(countrycode)
+
+
+};
+
+create_linegraph()
