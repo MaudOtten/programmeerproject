@@ -13,12 +13,10 @@ function createMap(data) {
 	// initiate world map
 	var Map = new Datamap({
 		
-		// this block of code is mostly copied from http://bl.ocks.org/markmarkoh/4127667, and adjusted
-		// highlighting a country when hovered over by mouse 
+		// get html element for drawing world map
 		element: document.getElementById("worldmap"),
 		
 		// function for click event to facilitate second visualization (bar chart)
-		// copied from https://github.com/markmarkoh/datamaps, section "Events"
 		done: function(datamap) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
 				// createBarchart(geography.id);

@@ -7,6 +7,7 @@
 	Part of final programming project 2016.
 */
 
+// createScatterplot();
 createMap(dataset[5]);
 createBarchart();
 
