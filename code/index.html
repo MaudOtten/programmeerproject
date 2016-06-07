@@ -17,7 +17,7 @@
 				<script src = "libs/d3.js"></script>
 			<script src = "libs/topojson.min.js"></script>
 			<script src = "libs/datamaps.all.js"></script>
-			<script src = "libs/countries.js"></script>
+			<script src = "libs/countrycodes.js"></script>
 			<script src = "libs/d3.slider.js"></script>
 			
 			<style>
@@ -53,28 +53,19 @@
 		
 		<div class = "wrap" align = center style = "display: inline">
 
-								<ul id="menu">
-									<li><a value = 260>De Bilt</a></li>
-									<li><a value = 270>Leeuwarden</a></li>
-									<li><a value = 380>Maastricht</a></li>
-								</ul>
-
-
 				<div class = "container" id="graph" style = "height: 300px; width: 600px"></div>
 				
 				<svg class = "container" id = "barchart" style="height: 250px; width: 200px"></svg>
 								
-				<div id = "slider"></div> 
+				<div id = "slider" style="width: 800px"></div>
 		</div>	
 				<br>
-		<div  id = "worldmap" style="height: 300px; width: 600px"></div>
-		
-
-		
-		<script src="D3lineExtended.js"></script>	
+		<div  id = "worldmap" align = center style="height: 500px; width: 1000px"></div>
+	
+		<script src = "data_per_year.js"></script>
+		<script src = "worldmap.js"></script>
+		<script src = "barchart.js"></script>
 		<script src="index.js"></script>
-
-		
 		
 	</body>
 </html>
