@@ -7,20 +7,22 @@
 	Part of final programming project 2016.
 */
 
+var data_birthrate;
+var data_researchers;
 
+// set margin for plot
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 1300 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var parseDate = d3.time.format("%Y%m%d");
-bisectDate = d3.bisector(function(d) { return d.time; }).left;
-	
-var x = d3.time.scale()
+// scale x and y to canvas
+var x = d3.scale.linear()
     .range([0, width]);
 
 var y = d3.scale.linear()
     .range([height, 0]);
 
+// setup axes
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
@@ -30,21 +32,24 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
-var line = d3.svg.line()
-    .x(function(d) { return x(d.time); })
-    .y(function(d) { return y(d.average); });	
-	
-var svg = d3.select("body").select("div").append("svg")
+// set svg values
+var svg = d3.select("body").select(".graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	
-d3.csv("new_data.csv", type, function(error, data) {
-  if (error) throw error;
-  
-  var data = data.slice(1, 731)
-  
+// load scatterplot-specific data	
+d3.csv("birth_rate_childperwoman.csv", type, function(error, data) {
+	if (error) throw error;
+
+
+	//createScatterplot(data_birthrate, data_researchers)
+
+});
+
+
+function createScatterplot(data_birthrate, data_researchers) {
   x.domain(d3.extent(data, function(d) { return d.time; })).nice();
   y.domain(d3.extent(data, function(d) { return d.average; })).nice();
   
@@ -96,7 +101,7 @@ d3.csv("new_data.csv", type, function(error, data) {
     follower.attr("transform", "translate(" + x(d.time) + "," + y(d.average) + ")");
     follower.select("text").text(d.time.toLocaleDateString() + ": " + d.average * 10 + " m/s");
   }
-});
+};
 
 function type(d) {
   d.time = parseDate.parse(d.Time);

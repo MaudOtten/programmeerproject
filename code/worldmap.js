@@ -6,12 +6,14 @@
 	
 	Part of final programming project 2016.
 */
+var Map;
+
+
+
 
 function createMap(data) {
-	
-	d3.select("#worldmap").selectAll("*").remove();
 	// initiate world map
-	var Map = new Datamap({
+	Map = new Datamap({
 		
 		// get html element for drawing world map
 		element: document.getElementById("worldmap"),

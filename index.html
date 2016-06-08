@@ -11,14 +11,19 @@
 
 <html>
 	<meta charset="utf-8">
-		<link rel="stylesheet" href="libs/d3.slider.css" /> 
-				<script src = "libs/d3.js"></script>
-			<script src = "libs/topojson.min.js"></script>
-			<script src = "libs/datamaps.all.js"></script>
-			<script src = "libs/countrycodes.js"></script>
-			<script src = "libs/d3.slider.js"></script>
+		<link rel="stylesheet" href="code/libs/d3.slider.css" /> 
+				<script src = "code/libs/d3.js"></script>
+			<script src = "code/libs/topojson.min.js"></script>
+			<script src = "code/libs/datamaps.all.js"></script>
+			<script src = "code/libs/countrycodes.js"></script>
+			<script src = "code/libs/d3.slider.js"></script>
+			<script src="http://d3js.org/queue.v1.min.js"></script>
 			
 			<style>
+				body {
+					background-color: aliceblue;
+				}
+				
 				.wrap {
 					width: 800px;
 					margin: 35px 0;
@@ -41,6 +46,19 @@
 				  font: 10px sans-serif;
 				  text-anchor: middle;
 				}
+				
+				.dot {
+					stroke: #000;
+				}
+				
+				.datamaps-legend {
+				  position: static;
+				}
+
+				.datamaps-legend d1 {
+				  text-align: center;
+				  display: block;
+				}
 
 			</style>
 			
@@ -60,9 +78,9 @@
 				<br>
 		<div  id = "worldmap" style="height: 500px; width: 800px"></div>
 	
-		<script src = "data_per_year.js"></script>
-		<script src = "worldmap.js"></script>
-		<script src = "barchart.js"></script>
+		<script src = "data/data_maps.js"></script>
+		<script src = "code/barchart.js"></script>
+		<script src = "code/worldmap.js"></script>
 		<script src="index.js"></script>
 		
 	</body>

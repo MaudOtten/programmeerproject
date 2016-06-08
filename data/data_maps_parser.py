@@ -257,13 +257,14 @@ country_codes = [
 
 # open readfile
 import csv
-dataFile = open('old_complete.csv', 'rb')
+dataFile = open('new_complete.csv', 'rb')
 Reader = csv.reader(dataFile)
 data = list(Reader)
 
+# write output into outputfile
+outputFile = open('data_maps.js', 'w')
+
 years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012]
-country_name = ""
-counter = 0
 
 # set all data to null
 female_in_research = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -271,108 +272,84 @@ female_in_research = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
 # start output string
-json = "data: {"
+
+def define_fillKey( value ):
+	fillKey = "defaultFill"
+
+	if value > 0.0:
+		fillKey = "< 5%"
+	if value > 5.0:
+		fillKey = "< 10%"
+	if value > 10.0:
+		fillKey = "< 15%"
+	if value > 15.0:
+		fillKey = "< 20%"
+	if value > 20.0:
+		fillKey = "< 25%"
+	if value > 25.0:
+		fillKey = "< 30%"
+	if value > 30.0:
+		fillKey = "< 35%"
+	if value > 35.0:
+		fillKey = "< 40%"
+	if value > 40.0:
+		fillKey = "< 45%"
+	if value > 45.0:
+		fillKey = "< 50%"
+	if value > 50.0:
+		fillKey = "> 50%"
+		
+	return fillKey
+
 
 # loop through each row in csv, put values in appropriate order into output string
 # HEADER:   Country, Indicator, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # in een for-loop is de each de inhoud van die iteratie (bv de row in data). De index ervan is data.index(row)
 
-for row in data[1:]:
+for year in years:
+	indx = years.index(year)
 	
-	if row[1] == "Researchers (FTE) - % Female":
-		female_in_research[0] = row[2]
-		female_in_research[1] = row[3]
-		female_in_research[2] = row[4]
-		female_in_research[3] = row[5]
-		female_in_research[4] = row[6]
-		female_in_research[5] = row[7]
-		female_in_research[6] = row[8]
-		female_in_research[7] = row[9]
-		female_in_research[8] = row[10]
-		female_in_research[9] = row[11]
-		female_in_research[10] = row[12]
-		female_in_research[11] = row[13]
-		female_in_research[12] = row[14]
+	json = "\nvar year_" + str(year) + " = {"
 	
-	if row[1] == "Researchers (HC) - % Female":
-		if female_in_research[0] is 0:
-			female_in_research[0] = row[2]
-		if female_in_research[1] is 0:	
-			female_in_research[1] = row[3]
-		if female_in_research[2] is 0:
-			female_in_research[2] = row[4]
-		if female_in_research[3] is 0:
-			female_in_research[3] = row[5]
-		if female_in_research[4] is 0:
-			female_in_research[4] = row[6]
-		if female_in_research[5] is 0:
-			female_in_research[5] = row[7]
-		if female_in_research[6] is 0:
-			female_in_research[6] = row[8]
-		if female_in_research[7] is 0:
-			female_in_research[7] = row[9]
-		if female_in_research[8] is 0:
-			female_in_research[8] = row[10]
-		if female_in_research[9] is 0:
-			female_in_research[9] = row[11]
-		if female_in_research[10] is 0:
-			female_in_research[10] = row[12]
-		if female_in_research[11] is 0:
-			female_in_research[11] = row[13]
-		if female_in_research[12] is 0:
-			female_in_research[12] = row[14]
+	country_name = "Albania"
+	counter = 0
 	
-	if row[0] is not "":
-		
-		countryCode = "Unknown";
-		country_name = str(row[0])
-		
-		for code in country_codes:
-			if country_name == country_codes[country_codes.index(code)][2]:
-				countryCode = country_codes[country_codes.index(code)][1]
-				break
-
-		country_name = "\"" + str(row[0]) + "\""
-		fillKey = "defaultFill"
-		
-		if float(female_in_research[12]) > 0.0:
-			fillKey = "< 5%"
-		if float(female_in_research[12]) > 5.0:
-			fillKey = "< 10%"
-		if float(female_in_research[12]) > 10.0:
-			fillKey = "< 15%"
-		if float(female_in_research[12]) > 15.0:
-			fillKey = "< 20%"
-		if float(female_in_research[12]) > 20.0:
-			fillKey = "< 25%"
-		if float(female_in_research[12]) > 25.0:
-			fillKey = "< 30%"
-		if float(female_in_research[12]) > 30.0:
-			fillKey = "< 35%"
-		if float(female_in_research[12]) > 35.0:
-			fillKey = "< 40%"
-		if float(female_in_research[12]) > 40.0:
-			fillKey = "< 45%"
-		if float(female_in_research[12]) > 45.0:
-			fillKey = "< 50%"
-		if float(female_in_research[12]) > 50.0:
-			fillKey = "> 50%"
-		
-		json += " \"" + str(countryCode) + "\" : { fillKey: \"" + fillKey + "\" },"
-
-		json = json[0:-2] + "}, "
-
-		if counter is not 0:
-			# set all data to null
-			female_in_research = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for row in data[1:]:
 	
-	counter += 1
+		if str(row[0]) != country_name or counter == 2468:
+						
+			countryCode = "Unknown";
+			
+			for code in country_codes:
+				if country_name == country_codes[country_codes.index(code)][2]:
+					countryCode = country_codes[country_codes.index(code)][1]
+					break
+					
+			fillKey = define_fillKey(float(female_in_research))
+			
+			json += "\"" + str(countryCode) + "\" : { fillKey: \"" + fillKey + "\", value: " + str(float(female_in_research)) + "}, "
 
-json = json[0:-2] + "}"
+			if counter is not 0:
+				# set data to null
+				female_in_research = 0
+			
+			country_name = str(row[0])
+		
+		if row[1] == "Researchers (FTE) - % Female":
+			female_in_research = row[indx + 2]
+		
+		if row[1] == "Researchers (HC) - % Female":
+			if female_in_research < row[indx + 2]:
+				female_in_research = row[indx + 2]
+		
+		counter += 1
+	
+	json = json[0:-2] + "};"
+	outputFile.write(json)
 
+print counter
+	
 
-
-# write output into outputfile
-outputFile = open('data_maps_2012.json', 'w')
-outputFile.write(json)
+end_of_file = "\n\nvar dataset = [year_2000, year_2001, year_2002, year_2003, year_2004, year_2005, year_2006, year_2007, year_2008, year_2009, year_2010, year_2011, year_2012];"
+outputFile.write(end_of_file)
 outputFile.close()
