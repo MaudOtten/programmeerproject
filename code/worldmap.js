@@ -8,9 +8,6 @@
 */
 var Map;
 
-
-
-
 function createMap(data) {
 	// initiate world map
 	Map = new Datamap({
@@ -21,8 +18,7 @@ function createMap(data) {
 		// function for click event to facilitate second visualization (bar chart)
 		done: function(datamap) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-				// createBarchart(geography.id);
-				console.log(geography);
+				createBarchart(geography.id);
 			});
 		},
 		

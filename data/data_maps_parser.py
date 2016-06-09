@@ -270,9 +270,7 @@ years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 female_in_research = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
-
-# start output string
-
+# function for calculating fillKey for value 'female_in_research'
 def define_fillKey( value ):
 	fillKey = "defaultFill"
 
@@ -303,9 +301,6 @@ def define_fillKey( value ):
 
 
 # loop through each row in csv, put values in appropriate order into output string
-# HEADER:   Country, Indicator, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
-# in een for-loop is de each de inhoud van die iteratie (bv de row in data). De index ervan is data.index(row)
-
 for year in years:
 	indx = years.index(year)
 	
@@ -347,7 +342,6 @@ for year in years:
 	json = json[0:-2] + "};"
 	outputFile.write(json)
 
-print counter
 	
 
 end_of_file = "\n\nvar dataset = [year_2000, year_2001, year_2002, year_2003, year_2004, year_2005, year_2006, year_2007, year_2008, year_2009, year_2010, year_2011, year_2012];"

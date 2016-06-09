@@ -59,6 +59,17 @@
 				  text-align: center;
 				  display: block;
 				}
+				
+				
+				.axis path,
+				.axis line {
+				  fill: none;
+				  stroke: #000;
+				  shape-rendering: crispEdges;
+				}
+				.x.axis path {
+					display: none;
+				}
 
 			</style>
 			
@@ -69,16 +80,16 @@
 		
 		<div class = "wrap" align = center style = "display: inline">
 
-				<div class = "container" id="graph" style = "height: 300px; width: 600px"></div>
+				<div class = "container" id = "graph" style = "height: 300px; width: 600px"></div>
 				
-				<svg class = "container" id = "barchart" style="height: 250px; width: 200px"></svg>
+				<svg class = "container" id = "barchart" style="height: 300px; width: 600px"></svg>
 								
 				<div id = "slider" style="width: 800px"></div>
 		</div>	
 				<br>
 		<div  id = "worldmap" style="height: 500px; width: 800px"></div>
 	
-		<script src = "data/data_maps.js"></script>
+		<script src = "data/data_all.js"></script>
 		<script src = "code/barchart.js"></script>
 		<script src = "code/worldmap.js"></script>
 		<script src="index.js"></script>

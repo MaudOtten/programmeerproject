@@ -7,15 +7,25 @@
 	Part of final programming project 2016.
 */
 
+var defaultData;
+var defaultCountrycode;
 
-function createBarchart(countrycode){
+function createBarchart(countrycode = defaultCountrycode, data = defaultData){
 	// remove previous bar chart
 	d3.select("#barchart").selectAll("*").remove();
-
+	
+	defaultCountrycode = countrycode;
+	defaultData = data;
+	
+	var dataArray = data[countrycode]["barchart"];
+	
+	var canvas_width = 600;
+	var canvas_height = 300;
+	
 	// define margin, range and scale values
-	var margin = {top: 20, right: 20, bottom: 30, left: 60},
-	width = 960 - margin.left - margin.right,
-	height = 450 - margin.top - margin.bottom;
+	var margin = {top: 20, right: 20, bottom: 50, left: 100},
+	width = canvas_width - margin.left - margin.right,
+	height = canvas_height - margin.top - margin.bottom;
 
 	var x = d3.scale.ordinal()
 	.rangeRoundBands([0, width], .1);
@@ -25,18 +35,13 @@ function createBarchart(countrycode){
 
 	var xAxis = d3.svg.axis()
 	.scale(x)
-	.orient("bottom");
+	.orient("bottom")
+	.ticks(14, "Category");
 
 	var yAxis = d3.svg.axis()
 	.scale(y)
 	.orient("left")
 	.ticks(10, "mm");
-	
-	var data = [28, 30, 40];
-
-	// define width and height
-	var width = 200,
-	height = 150;
 
 	// set x and y
 	var x = d3.scale.ordinal()
@@ -51,14 +56,14 @@ function createBarchart(countrycode){
 	.attr("height", height);
 
 	// set y domain
-	y.domain([0, d3.max(data, function(d) { return d; })]);
+	y.domain([0, d3.max(dataArray, function(d) { console.log(d[1]); return d[1]; })]);
 	
 	// define width of bar
-	var barWidth = width / data.length;
+	var barWidth = width / dataArray.length;
 	
 	// add data and transform to upright chart
 	var bar = chart.selectAll("g")
-	.data(data)
+	.data(dataArray)
 		.enter().append("g")
 		.attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
 	
@@ -68,23 +73,30 @@ function createBarchart(countrycode){
 	.attr("transform", "translate(0," + height + ")")
 	.call(xAxis);
 	
+	  chart.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("%");
+	
 	// append rect for each value
 	bar.append("rect")
-		.attr("y", function(d) { return y(d); })
-		.attr("height", function(d) { return height - y(d); })
+		.attr("y", function(d) { return d[1]; })
+		.attr("height", function(d) { return height - d[1]; })
 		.attr("width", barWidth - 5)
 		.append("title");
-	
-	console.log("bar appended")
+
 	
 	// give text to each bar
 	bar.append("text")
-		.attr("x", barWidth / 2)
-		.attr("y", function(d) { return y(d) + 3; })
+		.attr("x", barWidth)
+		.attr("y", height - margin.bottom)
 		.attr("dy", ".75em")
-		.text(function(d) { return d; });
-		
-	console.log(countrycode)
+		.text(function(d) { return d[0]; });
 
 
 };
