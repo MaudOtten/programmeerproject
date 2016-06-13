@@ -27,3 +27,18 @@ Vandaag presenteerden we onze prototypes voor een groep. Ik heb een begin gemaak
 Vandaag ben ik verder gegaan aan het processen van mijn data. Hier veel frustratie over. Ik heb alle lege velden een 0 gegeven, aangezien geen van de werkelijke datawaarden 0 was. Hierdoor is het iets makkelijker te verwerken dan met lege strings, die door verschillende talen verschillend worden geinterpreteerd (en dus geen geldige JSON opleveren). Ook heb ik een eerste poging gedaan om de data in datamaps te laden, dit lukt echter nog niet. Ik moet er waarschijnlijk een andere vorm aan geven om het mogelijk te maken.
 Ook een poging gedaan tot versimpelde datasets voor 1 jaar een fillkey per jaar. Even kijken of dit misschien iets oplevert...
 
+# Week 2 Day 2
+Vandaag heb ik mijn dataset omgegooid om te kunnen selecteren op jaar (ivm slider) in eerste instantie. 
+De csv had een aantal aanpassingen nodig mbt de landnamen en codes, waar de twee files die vergelijken niet altijd overeenkomen.
+Ook heb ik een aantal pogingen gedaan om de opmaak van mijn html pagina te verbeteren. Weinig suces in het centreren van de legenda van de map.
+
+# Week 2 Day 3
+De data voor maps weer aangepast en gekeken naar hoe de barchart het best de data ingevoerd kan krijgen. Hier weer nieuwe python script voor geschreven 
+en wederom gekeken naar een verbeterde css voor de html pagina.
+
+# Week 2 Day 4
+Data voor barchart kloppend gemaakt zodat die makkelijk gelezen en getekend kan worden. Het schalen van de barchart is echter nog niet correct. Het verandert wel obv klikken
+een land in de kaart.
+
+# Week 2 Day 5
+Weinig vooruitgang. Vooral gekloot met de legenda van de kaart. Data klopt nu helemaal voor barchart en kaart, eerste poging tot scatterplot data.
