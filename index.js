@@ -7,6 +7,10 @@
 	Part of final programming project 2016.
 */
 
+// set canvas size
+var container_width = 600;
+var container_height = 300;
+
 createScatterplot(dataset_scatter[1], "birth_rate");
 createMap(dataset[1]);
 createBarchart("PAK", dataset[1]);

@@ -21,18 +21,14 @@ function createScatterplot(dataset_scatter, variable) {
 		y_domain = 40;
 		y_name = "Expences on education (% of total)"
 	};
-	
-	// set canvas size
-	var canvas_width = 600;
-	var canvas_height = 300;
 
 	// get graph element
 	var base = d3.select("#graph");
 
 	// set margin for plot
 	var margin = {top: 20, right: 20, bottom: 30, left: 50},
-		width = canvas_width - margin.left - margin.right,
-		height = canvas_height - margin.top - margin.bottom;
+		width = container_width - margin.left - margin.right,
+		height = container_height - margin.top - margin.bottom;
 
 	// scale x and y to canvas
 	var x = d3.scale.linear()
@@ -54,8 +50,8 @@ function createScatterplot(dataset_scatter, variable) {
 		.orient("left");
 		
 	var chart = base.append('svg')
-		.attr("width", canvas_width)
-		.attr("height", canvas_height)
+		.attr("width", container_width)
+		.attr("height", container_height)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 		

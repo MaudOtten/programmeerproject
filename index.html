@@ -48,9 +48,9 @@
 					fill: firebrick;
 				}
 
-				#barchart text {
-				  fill: white;
-				  font: 10px sans-serif;
+				text {
+				  fill: black;
+				  font: 13px sans-serif;
 				  text-anchor: middle;
 				}
 				
@@ -60,15 +60,18 @@
 				
 				svg.datamap {
 					position:relative;
-					display: inline-table;
 				}
 				
-				.datamaps-hoverover {
+				.datamaps-hoverinfo {
 					position: relative;
 				}
 				
 				.datamaps-legend {
-					position: relative;
+					width: 120px;
+					height: 500x;
+					display: inline;
+					align: right;
+					margin: 35px 0;
 				}
 				
 				.axis path,
@@ -84,6 +87,16 @@
 				
 				.dot:hover {
 					fill: firebrick;
+				}
+				
+				.datamaps-legend dt {
+					float: left;
+					margin: 0 3px 2px 2px;
+				}
+				
+				.datamaps-legend dd {
+					float: right;
+					margin: 0 3px 2px 2px;
 				}
 			</style>
 			
@@ -104,7 +117,7 @@
 									
 				<div id = "slider" style="width: 1000px"></div>
 				
-				<div  id = "worldmap" style="height: 500px; width: 1000px" align = center></div>
+				<div id = "worldmap" style="height: 500px; width: 1000px" align = center></div>
 		</div>
 		
 	<script src = "data/data_all.js"></script>
