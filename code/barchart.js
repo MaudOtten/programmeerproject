@@ -12,6 +12,7 @@ function createBarchart(countrycode, data = dataset[11]){
 	d3.select("#barchart").selectAll("*").remove();
 	
 	if (!(countrycode in data)) {
+		console.log("not here");
 		createDefault;
 		return;
 	};
@@ -48,7 +49,7 @@ function createBarchart(countrycode, data = dataset[11]){
 	var y = d3.scale.linear()
 	.range([height, 0]);
 
-	var chart = d3.select("#barchart")
+	var chart = d3.select("#barchart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -101,10 +102,5 @@ function createBarchart(countrycode, data = dataset[11]){
 };
 
 function createDefault() {
-	var chart = d3.select("#barchart")
-		.append("g")
-		.append("text")
-		.style("fillStyle", "red")
-		.text("No data for this country")
-	
+	var chart = d3.select("#barchart").append("text").text("No data for this country");
 };

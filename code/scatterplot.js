@@ -7,8 +7,21 @@
 	Part of final programming project 2016.
 */
 
-function createScatterplot(dataset) {
-
+function createScatterplot(dataset_scatter, variable) {
+	
+	d3.select("#graph").selectAll("*").remove();
+	
+	if (variable == "birth_rate") {
+		y_index = 3;
+		y_domain = 8;
+		y_name = "Birth Rate (child per woman)"
+	};
+	if (variable == "expences_education") {
+		y_index = 4;
+		y_domain = 40;
+		y_name = "Expences on education (% of total)"
+	};
+	
 	// set canvas size
 	var canvas_width = 600;
 	var canvas_height = 300;
@@ -23,9 +36,11 @@ function createScatterplot(dataset) {
 
 	// scale x and y to canvas
 	var x = d3.scale.linear()
+		.domain([0, 70])
 		.range([0, width]);
 
 	var y = d3.scale.linear()
+		.domain([0, y_domain])
 		.range([height, 0]);
 
 	// setup axes
@@ -57,32 +72,17 @@ function createScatterplot(dataset) {
 			.attr("y", -45)
 			.attr("dy", ".71em")
 			.style("text-anchor", "end")
-			.text("Y variable");
-	
-// load scatterplot-specific data	
-
-	x.domain([0, 100]).nice();
-	y.domain([0, 100]).nice();
-	
-/* 	Object.keys(dataset).forEach(function(d) {
-		console.log(dataset[d].female_in_research)
-		d.x = +d[1];
-		d.y = +d[2];
-		d.country_code = d[0];
-	}); */
-	
-	console.log("here!")
+			.text(y_name);
 	
 	chart.selectAll("circle")
-		.data(dataset)
+		.data(dataset_scatter)
 			.enter()
 			.append("circle")
-			.attr("r", 3.5)
-			.attr("cx", function(d) { console.log("got it!"); return 5; })
-			.attr("cy", function(d) {return 6; });
+			.attr("class", "dot")
+			.attr("r", 4)
+			.attr("cx", function(d) {return x(d[2]); })
+			.attr("cy", function(d) {return y(d[y_index]); })
+			.style("display", function(d) { return d[2] == 0.0 || d[3] == 0.0  || d[4] == 0.0 ? "none" : null; });
 	
-
-
-
 };
 

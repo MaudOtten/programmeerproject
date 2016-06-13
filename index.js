@@ -7,20 +7,16 @@
 	Part of final programming project 2016.
 */
 
-// console.log(dataset_scatter[1]);
-// console.log(dataset[1])
-
-
-
-createScatterplot(dataset[1]);
-// createMap(dataset[1]);
-//createBarchart("PAK", dataset[11]); */
+createScatterplot(dataset_scatter[1], "birth_rate");
+createMap(dataset[1]);
+createBarchart("PAK", dataset[1]);
 
 // time slider
-d3.select('#slider').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(0).max(12).value(1).step(1)
+d3.select('#slider').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2000).max(2012).value(2001).step(1)
 .on("slide", function(evt, value) {
-	Map.updateChoropleth(dataset[value]);
+	Map.updateChoropleth(dataset[value - 2000]);
 	// createBarchart(dataset[value])
+	createScatterplot(dataset_scatter[value - 2000]);
 }));
 
 var slider = d3.select('#slider');

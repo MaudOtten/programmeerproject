@@ -24,7 +24,11 @@
 					background-color: aliceblue;
 				}
 				
-				.wrap {
+				.wrap1 {
+					align: center;
+				}
+				
+				.wrap2 {
 					width: 800px;
 					margin: 35px 0;
 					margin-left: auto;
@@ -75,7 +79,11 @@
 				}
 				
 				.dot {
-					fill: #000
+					fill: steelblue;
+				}
+				
+				.dot:hover {
+					fill: firebrick;
 				}
 			</style>
 			
@@ -85,22 +93,22 @@
 	</head>
 	
 	<body>
-		
-		<div class = "wrap">
+		<div class = "wrap1">
+			<div class = "wrap2">
 
-			<div class = "container" id = "graph" style = "height: 300px; width: 600px"></div>
-			
-			<svg class = "container" id = "barchart" style="height: 300px; width: 600px"></svg>
+				<div class = "container" id = "graph" style = "height: 300px; width: 600px"></div>
 				
+				<div class = "container" id = "barchart" style="height: 300px; width: 600px"></div>
+					
+			</div>
+									
+				<div id = "slider" style="width: 1000px"></div>
+				
+				<div  id = "worldmap" style="height: 500px; width: 1000px" align = center></div>
 		</div>
-								
-			<div id = "slider" style="width: 1000px"></div>
-			
-			<div  id = "worldmap" style="height: 500px; width: 1000px" align = center></div>
-	
 		
 	<script src = "data/data_all.js"></script>
-		<script src = "data/data_scatter.js"></script>
+		<script src = "data/data_scatter_2.js"></script>
 			<script src = "code/barchart.js"></script>
 				<script src = "code/scatterplot.js"></script>
 					<script src = "code/worldmap.js"></script>

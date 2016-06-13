@@ -283,7 +283,7 @@ data3 = list(Reader3)
 json = ""
 
 # create outputfile
-outputFile = open('data_scatter.js', 'w')
+outputFile = open('data_scatter_2.js', 'w')
 outputFile.write("var dataset_scatter = [ ")
 
 
@@ -319,7 +319,7 @@ for year in years:
 					expences_education = row3[6]
 			
 			
-			json += "[\"" + countryCode + "\", " + str(female_in_research) + ", " + str(birth_rate) + ", " + str(expences_education) + "], "
+			json += "[\"" + countryCode + "\", \"" + country_name + "\", " + str(female_in_research) + ", " + str(birth_rate) + ", " + str(expences_education) + "], "
 
 			if counter is not 0:
 				# set data to null
@@ -355,7 +355,7 @@ for year in years:
 		if row3[2] == countryCode and row3[4] == str(year):
 			expences_education = row3[6]
 	
-	json += "[\"" + countryCode + "\", " + str(female_in_research) + ", " + str(birth_rate) + ", " + str(expences_education) + "], "
+	json += "[\"" + countryCode + "\", \"" + country_name + "\", " + str(female_in_research) + ", " + str(birth_rate) + ", " + str(expences_education) + "], "
 
 	
 	json = json[0:-2] + "]"
