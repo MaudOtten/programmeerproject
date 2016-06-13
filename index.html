@@ -29,16 +29,19 @@
 					margin: 35px 0;
 					margin-left: auto;
 					margin-right: auto;
+					display: inline;
 				}
 				
 				.container {
-					display: inline;
-					margin-right:10px;
+					display: inline-block;
 				}
-			
 				
 				#barchart rect {
 				  fill: steelblue;
+				}
+				
+				#barchart rect:hover {
+					fill: firebrick;
 				}
 
 				#barchart text {
@@ -51,15 +54,18 @@
 					stroke: #000;
 				}
 				
-				.datamaps-legend {
-				  position: static;
-				}
-
-				.datamaps-legend d1 {
-				  text-align: center;
-				  display: block;
+				svg.datamap {
+					position:relative;
+					display: inline-table;
 				}
 				
+				.datamaps-hoverover {
+					position: relative;
+				}
+				
+				.datamaps-legend {
+					position: relative;
+				}
 				
 				.axis path,
 				.axis line {
@@ -67,32 +73,38 @@
 				  stroke: #000;
 				  shape-rendering: crispEdges;
 				}
-				.x.axis path {
-					display: none;
+				
+				.dot {
+					fill: #000
 				}
-
 			</style>
+			
 			
 	<head>
 		<h2 align=center>Women in science: where do we find them?</h2>
 	</head>
+	
 	<body>
 		
-		<div class = "wrap" align = center style = "display: inline">
+		<div class = "wrap">
 
-				<div class = "container" id = "graph" style = "height: 300px; width: 600px"></div>
+			<div class = "container" id = "graph" style = "height: 300px; width: 600px"></div>
+			
+			<svg class = "container" id = "barchart" style="height: 300px; width: 600px"></svg>
 				
-				<svg class = "container" id = "barchart" style="height: 300px; width: 600px"></svg>
+		</div>
 								
-				<div id = "slider" style="width: 800px"></div>
-		</div>	
-				<br>
-		<div  id = "worldmap" style="height: 500px; width: 800px"></div>
+			<div id = "slider" style="width: 1000px"></div>
+			
+			<div  id = "worldmap" style="height: 500px; width: 1000px" align = center></div>
 	
-		<script src = "data/data_all.js"></script>
-		<script src = "code/barchart.js"></script>
-		<script src = "code/worldmap.js"></script>
-		<script src="index.js"></script>
+		
+	<script src = "data/data_all.js"></script>
+		<script src = "data/data_scatter.js"></script>
+			<script src = "code/barchart.js"></script>
+				<script src = "code/scatterplot.js"></script>
+					<script src = "code/worldmap.js"></script>
+						<script src="index.js"></script>
 		
 	</body>
 </html>

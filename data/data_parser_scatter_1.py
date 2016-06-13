@@ -260,21 +260,6 @@ female_in_research = 0
 birth_rate = 0
 expences_education = 0
 
-total_nature = 0
-total_engineering = 0
-total_agriculture = 0
-total_medicine = 0
-total_social = 0
-total_humanities = 0
-total_notspecified = 0
-
-female_nature = 0
-female_engineering = 0
-female_agriculture = 0
-female_medicine = 0
-female_social = 0
-female_humanities = 0
-female_notspecified = 0
 
 years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012]
 
@@ -298,51 +283,22 @@ data3 = list(Reader3)
 json = ""
 
 # create outputfile
-outputFile = open('data_all.js', 'w')
-outputFile.write("var dataset = [ ")
-
-# calculate fillKey for worldmap
-def define_fillKey( value ):
-	fillKey = "defaultFill"
-
-	if value > 0.0:
-		fillKey = "< 5%"
-	if value > 5.0:
-		fillKey = "< 10%"
-	if value > 10.0:
-		fillKey = "< 15%"
-	if value > 15.0:
-		fillKey = "< 20%"
-	if value > 20.0:
-		fillKey = "< 25%"
-	if value > 25.0:
-		fillKey = "< 30%"
-	if value > 30.0:
-		fillKey = "< 35%"
-	if value > 35.0:
-		fillKey = "< 40%"
-	if value > 40.0:
-		fillKey = "< 45%"
-	if value > 45.0:
-		fillKey = "< 50%"
-	if value > 50.0:
-		fillKey = "> 50%"
-		
-	return fillKey
+outputFile = open('data_scatter.js', 'w')
+outputFile.write("var dataset_scatter = [ ")
 
 
 # loop through datasets per year in data
 for year in years:
 	indx = years.index(year)
 	
-	json = "\n{"
+	json = "\n["
 	
 	country_name = "Albania"
 	counter = 0
 	
 	for row in data[1:]:
 	
-		if str(row[0]) != country_name:
+		if str(row[0]) != country_name and counter != 0:
 						
 			countryCode = "Unknown";
 			
@@ -351,7 +307,6 @@ for year in years:
 					countryCode = country_codes[country_codes.index(code)][1]
 					break
 					
-			fillKey = define_fillKey(float(female_in_research))
 			
 			for row2 in data2[1:]:
 				
@@ -363,34 +318,14 @@ for year in years:
 				if row3[2] == countryCode and row3[4] == str(year):
 					expences_education = row3[6]
 			
-			# scatter_1 = "scatter_1: [" + 
-			barchart = "barchart: [[\"female_nature\", " + str(female_nature) + "], [\"total_nature\", " + str(total_nature) +"], [\"female_engineering\", " + str(female_engineering) + "], [\"total_engineering\", " + str(total_engineering) + "], [\"female_agriculture\", " + str(female_agriculture) + "], [\"total_agriculture\", " + str(total_agriculture) + "], [\"female_medicine\", " + str(female_medicine) + "], [\"total_medicine\", " + str(total_medicine) + "], [\"female_social\", " + str(female_social) + "], [\"total_social\", " + str(total_social) + "], [\"female_humanities\", " + str(female_humanities) + "], [\"total_humanities\", " + str(total_humanities) + "], [\"female_notspecified\", " + str(female_notspecified) +"], [\"total_notspecified\", " + str(total_notspecified) + "]]"
-			json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + ", " + barchart + "}, "
 			
-			# json += ",  + str(total_nature) + ", : " + str(female_nature) + ", total_engineering: " + str(total_engineering) + ", female_engineering: " + str(female_engineering) + ", total_agriculture: " + str(total_agriculture) + ", female_agriculture: " + str(female_agriculture) + ", total_medicine: " + str(total_medicine) + ", female_medicine: " + str(female_medicine) + ", total_social: " + str(total_social) + ", female_social: " + str(female_social) + ", total_humanities: " + str(total_humanities) + ", female_humanities: " + str(female_humanities) + ", total_notspecified: " + str(total_notspecified) + ", female_notspecified: " + str(female_notspecified) + "}, "
+			json += "[\"" + countryCode + "\", " + str(female_in_research) + ", " + str(birth_rate) + ", " + str(expences_education) + "], "
 
 			if counter is not 0:
 				# set data to null
 				female_in_research = 0
 				birth_rate = 0
-				female_work = 0
 				expences_education = 0
-
-				total_nature = 0
-				total_engineering = 0
-				total_agriculture = 0
-				total_medicine = 0
-				total_social = 0
-				total_humanities = 0
-				total_notspecified = 0
-
-				female_nature = 0
-				female_engineering = 0
-				female_agriculture = 0
-				female_medicine = 0
-				female_social = 0
-				female_humanities = 0
-				female_notspecified = 0
 			
 			country_name = str(row[0])
 		
@@ -399,51 +334,6 @@ for year in years:
 		
 		if row[1] == "Researchers (HC) - % Female" and female_in_research < row[indx + 2]:
 			female_in_research = row[indx + 2]
-		
-		if row[1] == "Researchers (FTE) - % Female":
-			female_in_research = row[indx + 2]
-		
-		if row[1] == "Researchers (FTE) - Natural sciences %":
-			total_nature = row[indx + 2]
-	
-		if row[1] == "Researchers (FTE) - Engineering and technology %":
-			total_engineering = row[indx + 2]
-			
-		if row[1] == "Researchers (FTE) - Medical and health sciences %":
-			total_medicine = row[indx + 2]
-		
-		if row[1] == "Researchers (FTE) - Agricultural sciences %":
-			total_agriculture = row[indx + 2]
-		
-		if row[1] == "Researchers (FTE) - Social sciences %":
-			total_social = row[indx + 2]
-		
-		if row[1] == "Researchers (FTE) - Humanities %":
-			total_humanities = row[indx + 2]
-			
-		if row[1] == "Researchers (FTE) - Not specified fields %":
-			total_notspecified = row[indx + 2]
-			
-		if row[1] == "Female researchers as a percentage of total researchers (FTE) - Natural sciences":
-			female_nature = row[indx + 2]
-		
-		if row[1] == "Female researchers as a percentage of total researchers (FTE) - Engineering and technology":
-			female_engineering = row[indx + 2]
-		
-		if row[1] == "Female researchers as a percentage of total researchers (FTE) - Medical and health sciences":
-			female_medicine = row[indx + 2]
-
-		if row[1] == "Female researchers as a percentage of total researchers (FTE) - Agricultural sciences":
-			female_medicine = row[indx + 2]
-		
-		if row[1] == "Female researchers as a percentage of total researchers (FTE) - Social sciences":
-			female_social = row[indx + 2]
-		
-		if row[1] == "Female researchers as a percentage of total researchers (FTE) - Humanities":
-			female_humanities = row[indx + 2]
-		
-		if row[1] == "Female researchers as a percentage of total researchers (FTE) - Not specified fields":
-			female_notspecified = row[indx + 2]
 		
 		counter += 1
 	
@@ -454,7 +344,6 @@ for year in years:
 			countryCode = country_codes[country_codes.index(code)][1]
 			break
 			
-	fillKey = define_fillKey(float(female_in_research))
 	
 	for row2 in data2[1:]:
 		
@@ -466,14 +355,14 @@ for year in years:
 		if row3[2] == countryCode and row3[4] == str(year):
 			expences_education = row3[6]
 	
-	barchart = "barchart: [[\"female_nature\", " + str(female_nature) + "], [\"total_nature\", " + str(total_nature) +"], [\"female_engineering\", " + str(female_engineering) + "], [\"total_engineering\", " + str(total_engineering) + "], [\"female_agriculture\", " + str(female_agriculture) + "], [\"total_agriculture\", " + str(total_agriculture) + "], [\"female_medicine\", " + str(female_medicine) + "], [\"total_medicine\", " + str(total_medicine) + "], [\"female_social\", " + str(female_social) + "], [\"total_social\", " + str(total_social) + "], [\"female_humanities\", " + str(female_humanities) + "], [\"total_humanities\", " + str(total_humanities) + "], [\"female_notspecified\", " + str(female_notspecified) +"], [\"total_notspecified\", " + str(total_notspecified) + "]]"
-	json += "\"" + str(countryCode) + "\" : { fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + ", " + barchart + "}, "
+	json += "[\"" + countryCode + "\", " + str(female_in_research) + ", " + str(birth_rate) + ", " + str(expences_education) + "], "
+
 	
-	
-	json = json[0:-2] + "}"
+	json = json[0:-2] + "]"
 	
 	if indx < 12:
 		json += ","
+	
 	outputFile.write(json)
 
 	

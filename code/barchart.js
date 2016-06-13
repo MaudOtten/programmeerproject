@@ -7,15 +7,14 @@
 	Part of final programming project 2016.
 */
 
-var defaultData;
-var defaultCountrycode;
-
-function createBarchart(countrycode = defaultCountrycode, data = defaultData){
+function createBarchart(countrycode, data = dataset[11]){
 	// remove previous bar chart
 	d3.select("#barchart").selectAll("*").remove();
 	
-	defaultCountrycode = countrycode;
-	defaultData = data;
+	if (!(countrycode in data)) {
+		createDefault;
+		return;
+	};
 	
 	var dataArray = data[countrycode]["barchart"];
 	
@@ -23,7 +22,7 @@ function createBarchart(countrycode = defaultCountrycode, data = defaultData){
 	var canvas_height = 300;
 	
 	// define margin, range and scale values
-	var margin = {top: 20, right: 20, bottom: 50, left: 100},
+	var margin = {top: 20, right: 20, bottom: 50, left: 50},
 	width = canvas_width - margin.left - margin.right,
 	height = canvas_height - margin.top - margin.bottom;
 
@@ -35,8 +34,7 @@ function createBarchart(countrycode = defaultCountrycode, data = defaultData){
 
 	var xAxis = d3.svg.axis()
 	.scale(x)
-	.orient("bottom")
-	.ticks(14, "Category");
+	.orient("bottom");
 
 	var yAxis = d3.svg.axis()
 	.scale(y)
@@ -50,13 +48,14 @@ function createBarchart(countrycode = defaultCountrycode, data = defaultData){
 	var y = d3.scale.linear()
 	.range([height, 0]);
 
-	// give values to chart
 	var chart = d3.select("#barchart")
-	.attr("width", width)
-	.attr("height", height);
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// set y domain
-	y.domain([0, d3.max(dataArray, function(d) { console.log(d[1]); return d[1]; })]);
+	y.domain([0, 100]).nice();
 	
 	// define width of bar
 	var barWidth = width / dataArray.length;
@@ -69,12 +68,12 @@ function createBarchart(countrycode = defaultCountrycode, data = defaultData){
 	
 	// create x-axis
 	chart.append("g")
-	.attr("class", "x axis")
+	.attr("class", "axis")
 	.attr("transform", "translate(0," + height + ")")
 	.call(xAxis);
 	
 	  chart.append("g")
-      .attr("class", "y axis")
+      .attr("class", "axis")
       .call(yAxis)
     .append("text")
       .attr("transform", "rotate(-90)")
@@ -99,4 +98,13 @@ function createBarchart(countrycode = defaultCountrycode, data = defaultData){
 		.text(function(d) { return d[0]; });
 
 
+};
+
+function createDefault() {
+	var chart = d3.select("#barchart")
+		.append("g")
+		.append("text")
+		.style("fillStyle", "red")
+		.text("No data for this country")
+	
 };
