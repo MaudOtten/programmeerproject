@@ -7,7 +7,7 @@
 	Part of final programming project 2016.
 */
 
-function createScatterplot(dataset_scatter, variable) {
+function createScatterplot(data_index, variable = "birth_rate") {
 	
 	d3.select("#graph").selectAll("*").remove();
 	
@@ -21,7 +21,7 @@ function createScatterplot(dataset_scatter, variable) {
 		y_domain = 40;
 		y_name = "Expences on education (% of total)"
 	};
-
+	
 	// get graph element
 	var base = d3.select("#graph");
 
@@ -32,7 +32,7 @@ function createScatterplot(dataset_scatter, variable) {
 
 	// scale x and y to canvas
 	var x = d3.scale.linear()
-		.domain([0, 70])
+		.domain([0, 55])
 		.range([0, width]);
 
 	var y = d3.scale.linear()
@@ -70,15 +70,20 @@ function createScatterplot(dataset_scatter, variable) {
 			.style("text-anchor", "end")
 			.text(y_name);
 	
+	// select data
+	var data = dataset_scatter[data_index];
+	
 	chart.selectAll("circle")
-		.data(dataset_scatter)
+		.data(data)
 			.enter()
 			.append("circle")
 			.attr("class", "dot")
-			.attr("r", 4)
+			.attr("r", 5)
 			.attr("cx", function(d) {return x(d[2]); })
 			.attr("cy", function(d) {return y(d[y_index]); })
 			.style("display", function(d) { return d[2] == 0.0 || d[3] == 0.0  || d[4] == 0.0 ? "none" : null; });
+	
+	// chart.selectAll("circle").on("mouseover", console.log("heyo"));
 	
 };
 

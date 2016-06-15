@@ -12,20 +12,19 @@
 <html>
 	<meta charset="utf-8">
 		<link rel="stylesheet" href="code/libs/d3.slider.css" /> 
-				<script src = "code/libs/d3.js"></script>
-			<script src = "code/libs/topojson.min.js"></script>
-			<script src = "code/libs/datamaps.all.js"></script>
-			<script src = "code/libs/countrycodes.js"></script>
-			<script src = "code/libs/d3.slider.js"></script>
-			<script src="http://d3js.org/queue.v1.min.js"></script>
+			<script src = "code/libs/d3.js"></script>
+				<script src = "code/libs/topojson.min.js"></script>
+					<script src = "code/libs/datamaps.all.js"></script>
+						<script src = "code/libs/countrycodes.js"></script>
+							<script src = "code/libs/d3.slider.js"></script>
 			
 			<style>
 				body {
-					background-color: aliceblue;
+					background-color: #FFFFCC;
 				}
 				
 				.wrap1 {
-					align: center;
+					display: align-center;
 				}
 				
 				.wrap2 {
@@ -41,7 +40,7 @@
 				}
 				
 				#barchart rect {
-				  fill: steelblue;
+					fill: #008000;
 				}
 				
 				#barchart rect:hover {
@@ -82,7 +81,7 @@
 				}
 				
 				.dot {
-					fill: steelblue;
+					fill: #008000;
 				}
 				
 				.dot:hover {
@@ -102,7 +101,7 @@
 			
 			
 	<head>
-		<h2 align=center>Women in science: where do we find them?</h2>
+		<h2>Women in science: where do we find them?</h2>
 	</head>
 	
 	<body>
@@ -120,12 +119,12 @@
 				<div id = "worldmap" style="height: 500px; width: 1000px" align = center></div>
 		</div>
 		
-	<script src = "data/data_all.js"></script>
-		<script src = "data/data_scatter_2.js"></script>
-			<script src = "code/barchart.js"></script>
-				<script src = "code/scatterplot.js"></script>
-					<script src = "code/worldmap.js"></script>
-						<script src="index.js"></script>
+	<script src = "data/data_all.js" defer></script>
+		<script src = "data/data_scatter_2.js" defer></script>
+			<script src = "code/barchart.js" defer></script>
+				<script src = "code/scatterplot.js" defer></script>
+					<script src = "code/worldmap.js" defer></script>
+						<script src="index.js" defer></script>
 		
 	</body>
 </html>
