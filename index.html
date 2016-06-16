@@ -12,113 +12,32 @@
 <html>
 	<meta charset="utf-8">
 		<link rel="stylesheet" href="code/libs/d3.slider.css" /> 
-			<script src = "code/libs/d3.js"></script>
-				<script src = "code/libs/topojson.min.js"></script>
-					<script src = "code/libs/datamaps.all.js"></script>
-						<script src = "code/libs/countrycodes.js"></script>
-							<script src = "code/libs/d3.slider.js"></script>
-			
-			<style>
-				body {
-					background-color: #FFFFCC;
-				}
-				
-				.wrap1 {
-					display: align-center;
-				}
-				
-				.wrap2 {
-					width: 800px;
-					margin: 35px 0;
-					margin-left: auto;
-					margin-right: auto;
-					display: inline;
-				}
-				
-				.container {
-					display: inline-block;
-				}
-				
-				#barchart rect {
-					fill: #008000;
-				}
-				
-				#barchart rect:hover {
-					fill: firebrick;
-				}
-
-				text {
-				  fill: black;
-				  font: 13px sans-serif;
-				  text-anchor: middle;
-				}
-				
-				.dot {
-					stroke: #000;
-				}
-				
-				svg.datamap {
-					position:relative;
-				}
-				
-				.datamaps-hoverinfo {
-					position: relative;
-				}
-				
-				.datamaps-legend {
-					width: 120px;
-					height: 500x;
-					display: inline;
-					align: right;
-					margin: 35px 0;
-				}
-				
-				.axis path,
-				.axis line {
-				  fill: none;
-				  stroke: #000;
-				  shape-rendering: crispEdges;
-				}
-				
-				.dot {
-					fill: #008000;
-				}
-				
-				.dot:hover {
-					fill: firebrick;
-				}
-				
-				.datamaps-legend dt {
-					float: left;
-					margin: 0 3px 2px 2px;
-				}
-				
-				.datamaps-legend dd {
-					float: right;
-					margin: 0 3px 2px 2px;
-				}
-			</style>
+		<link rel="stylesheet" href="code/libs/WomenInScience.css" /> 
+		<script src = "code/libs/d3.js"></script>
+		<script src = "code/libs/topojson.min.js"></script>
+		<script src = "code/libs/datamaps.all.js"></script>
+		<script src = "code/libs/countrycodes.js"></script>
+		<script src = "code/libs/d3.slider.js"></script>
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 			
 			
 	<head>
-		<h2>Women in science: where do we find them?</h2>
+		<h1>Women in science: where do we find them?</h1>
 	</head>
 	
 	<body>
-		<div class = "wrap1">
-			<div class = "wrap2">
+			<div class = "wrap">
 
-				<div class = "container" id = "graph" style = "height: 300px; width: 600px"></div>
+				<div class = "container" id = "graph"></div>
 				
-				<div class = "container" id = "barchart" style="height: 300px; width: 600px"></div>
+				<div class = "container" id = "barchart"></div>
 					
 			</div>
 									
-				<div id = "slider" style="width: 1000px"></div>
+				<br><div id = "slider"></div>
 				
-				<div id = "worldmap" style="height: 500px; width: 1000px" align = center></div>
-		</div>
-		
+				<div id = "worldmap"></div>
+	</body>
 	<script src = "data/data_all.js" defer></script>
 		<script src = "data/data_scatter_2.js" defer></script>
 			<script src = "code/barchart.js" defer></script>
@@ -126,5 +45,4 @@
 					<script src = "code/worldmap.js" defer></script>
 						<script src="index.js" defer></script>
 		
-	</body>
 </html>

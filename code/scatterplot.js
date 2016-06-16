@@ -48,13 +48,22 @@ function createScatterplot(data_index, variable = "birth_rate") {
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left");
-		
+	
+	var tip = d3.tip()
+		.attr('class', 'scatterTip')
+		.offset([-10, 0])
+		.html(function(d) {
+			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(50, 205, 50)'>Women in research: " + d[2] + "%</span><br/><span style='color: rgb(50, 205, 50)'>" + y_name + ": " + d[y_index] + "</span>";
+		});
+
 	var chart = base.append('svg')
 		.attr("width", container_width)
 		.attr("height", container_height)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 		
+	chart.call(tip);
+	
 	chart.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
@@ -72,6 +81,7 @@ function createScatterplot(data_index, variable = "birth_rate") {
 	
 	// select data
 	var data = dataset_scatter[data_index];
+	var scatterplot = dataset[data_index];
 	
 	chart.selectAll("circle")
 		.data(data)
@@ -81,9 +91,20 @@ function createScatterplot(data_index, variable = "birth_rate") {
 			.attr("r", 5)
 			.attr("cx", function(d) {return x(d[2]); })
 			.attr("cy", function(d) {return y(d[y_index]); })
-			.style("display", function(d) { return d[2] == 0.0 || d[3] == 0.0  || d[4] == 0.0 ? "none" : null; });
-	
-	// chart.selectAll("circle").on("mouseover", console.log("heyo"));
+			.style("display", function(d) { return d[2] == 0.0 || d[3] == 0.0  || d[4] == 0.0 ? "none" : null; })
+			.on('click', function(d) {
+				selectedCountry = d[0];
+				createBarchart(d[0]);
+			})
+			.on('mouseover', tip.show)
+			.on('mouseout', tip.hide);
+/* 			.on("mouseover", function(d) {
+				var updateCountry = {};
+				updateCountry[d[0]] = '#FF5454';
+				Map.updateChoropleth(updateCountry);
+			})
+			.on("mouseout", function(d) { 
+				Map.updateChoropleth(null, {reset: true}); }) */
 	
 };
 

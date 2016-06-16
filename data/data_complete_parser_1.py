@@ -363,7 +363,10 @@ for year in years:
 				if row3[2] == countryCode and row3[4] == str(year):
 					expences_education = row3[6]
 			
-			# scatter_1 = "scatter_1: [" + 
+			# if total_nature == '0' and total_engineering == '0' and total_agriculture == '0' and total_medicine == '0' and total_social == '0' and total_humanities == '0' and total_notspecified == '0' and female_nature == '0' and female_engineering == '0' and female_agriculture == '0' and female_medicine == '0' and female_social == '0' and female_humanities == '0' and female_notspecified == '0':
+				# print 'here'
+				# json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + "}, "
+
 			barchart = "barchart: [[\"female_nature\", " + str(female_nature) + "], [\"total_nature\", " + str(total_nature) +"], [\"female_engineering\", " + str(female_engineering) + "], [\"total_engineering\", " + str(total_engineering) + "], [\"female_agriculture\", " + str(female_agriculture) + "], [\"total_agriculture\", " + str(total_agriculture) + "], [\"female_medicine\", " + str(female_medicine) + "], [\"total_medicine\", " + str(total_medicine) + "], [\"female_social\", " + str(female_social) + "], [\"total_social\", " + str(total_social) + "], [\"female_humanities\", " + str(female_humanities) + "], [\"total_humanities\", " + str(total_humanities) + "], [\"female_notspecified\", " + str(female_notspecified) +"], [\"total_notspecified\", " + str(total_notspecified) + "]]"
 			json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + ", " + barchart + "}, "
 			
@@ -465,10 +468,14 @@ for year in years:
 		
 		if row3[2] == countryCode and row3[4] == str(year):
 			expences_education = row3[6]
-	
+
+	# if total_nature is '0' and total_engineering == '0' and total_agriculture == '0' and total_medicine == '0' and total_social == '0' and total_humanities == '0' and total_notspecified == '0' and female_nature == '0' and female_engineering == '0' and female_agriculture == '0' and female_medicine == '0' and female_social == '0' and female_humanities == '0' and female_notspecified == '0':
+		# print 'here'
+		# json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + "}, "
+
 	barchart = "barchart: [[\"female_nature\", " + str(female_nature) + "], [\"total_nature\", " + str(total_nature) +"], [\"female_engineering\", " + str(female_engineering) + "], [\"total_engineering\", " + str(total_engineering) + "], [\"female_agriculture\", " + str(female_agriculture) + "], [\"total_agriculture\", " + str(total_agriculture) + "], [\"female_medicine\", " + str(female_medicine) + "], [\"total_medicine\", " + str(total_medicine) + "], [\"female_social\", " + str(female_social) + "], [\"total_social\", " + str(total_social) + "], [\"female_humanities\", " + str(female_humanities) + "], [\"total_humanities\", " + str(total_humanities) + "], [\"female_notspecified\", " + str(female_notspecified) +"], [\"total_notspecified\", " + str(total_notspecified) + "]]"
-	json += "\"" + str(countryCode) + "\" : { fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + ", " + barchart + "}, "
-	
+	json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + ", " + barchart + "}, "
+			
 	
 	json = json[0:-2] + "}"
 	

@@ -1,0 +1,109 @@
+body {
+	background-color: #FFFFCC;
+}
+
+h1 {
+	text-align: center;
+	border: 3px solid green;
+}
+
+.wrap {
+	width: 50%;
+	margin: auto;
+	padding: 10px;
+	display: inline;
+}
+
+.container {
+	display: inherit;
+	width: 600px;
+	height: 300px;
+}
+#slider {
+	margin: auto;
+	width: 1000px;
+}
+text {
+  fill: black;
+  font: 13px sans-serif;
+  text-anchor: middle;
+}
+
+#worldmap {
+	margin: auto;
+	width: 1000px;
+	height: 500px;
+}
+
+svg.datamap {
+	position:relative;
+	margin: auto;
+}
+
+.datamaps-hoverinfo {
+	position: relative;
+}
+
+.datamaps-legend {
+	width: 120px;
+	height: 500px;
+	display: inline;
+	float: right;
+	margin: 35px 0;
+}
+
+.datamaps-legend dt {
+	float: left;
+	margin: 0 3px 2px 2px;
+}
+
+.datamaps-legend dd {
+	float: right;
+	margin: 0 3px 2px 2px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+}
+				
+.dot {
+	stroke: #000;
+	fill: #32CD32;
+}
+
+.dot:hover {
+	fill: firebrick;
+}
+
+
+
+.scatterTip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.scatterTip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+
+}
+
+/* Style northward tooltips differently */
+.scatterTip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

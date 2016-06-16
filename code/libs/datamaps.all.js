@@ -16,14 +16,14 @@
         dataUrl: null,
         hideAntarctica: true,
         borderWidth: 1,
-        borderColor: '#FDFDFD',
+        borderColor: 'rgba(0, 0, 0, 0.2)',
         popupTemplate: function(geography, data) {
           return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
         },
-        popupOnHover: true,
+        popupOnHover: false,
         highlightOnHover: true,
-        highlightFillColor: '#FC8D59',
-        highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+        highlightBorderColor: 'rgba(0, 0, 0, 0.2)',
+		highlightFillColor: '#FF5454',
         highlightBorderWidth: 2
     },
     bubblesConfig: {
@@ -85,7 +85,7 @@
   function addStyleBlock() {
     if ( d3.select('.datamaps-style-block').empty() ) {
       d3.select('head').attr('class', 'datamaps-style-block').append('style')
-      .html('.datamap path {stroke: #FFFFFF; stroke-width: 1px;} .datamaps-legend dt, .datamaps-legend dd { float: left; margin: 0 3px 0 0;} .datamaps-legend dd {width: 20px; margin-right: 6px; border-radius: 3px;} .datamaps-legend {padding-bottom: 20px; z-index: 1001; position: absolute; left: 4px; font-size: 12px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;} .datamaps-hoverover {display: none; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; } .hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; } .hoverinfo hr {border:1px dotted #CCC; }');
+      .html('.datamap path {stroke: #FFFFFF; stroke-width: 1px;} .datamaps-legend dt {float: left; margin: 0 3px 2px 2px;}, .datamaps-legend dd { float: right; margin: 0 3px 0 0;} .datamaps-legend dd {width: 20px; margin-right: 6px; border-radius: 3px;} .datamaps-legend {padding-bottom: 20px; z-index: 1001; position: absolute; left: 4px; font-size: 12px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;} .datamaps-hoverover {display: none; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; } .hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; } .hoverinfo hr {border:1px dotted #CCC; }');
     }
   }
 
@@ -197,7 +197,7 @@
     var html = '<dl>';
     var label = '';
     if ( data.legendTitle ) {
-      html = '<h2>' + data.legendTitle + '</h2>' + html;
+      html = '<br><br><br><br><br><h2>' + data.legendTitle + '</h2>' + html;
     }
     for ( var fillKey in this.options.fills ) {
 
