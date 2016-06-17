@@ -32,7 +32,7 @@ function createScatterplot(data_index, variable = "birth_rate") {
 
 	// scale x and y to canvas
 	var x = d3.scale.linear()
-		.domain([0, 55])
+		.domain([0, 60])
 		.range([0, width]);
 
 	var y = d3.scale.linear()
@@ -53,7 +53,8 @@ function createScatterplot(data_index, variable = "birth_rate") {
 		.attr('class', 'scatterTip')
 		.offset([-10, 0])
 		.html(function(d) {
-			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(50, 205, 50)'>Women in research: " + d[2] + "%</span><br/><span style='color: rgb(50, 205, 50)'>" + y_name + ": " + d[y_index] + "</span>";
+			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(50, 205, 50)'>Women in research: " 
+			+ d[2] + "%</span><br/><span style='color: rgb(50, 205, 50)'>" + y_name + ": " + d3.format(".2n")(d[y_index]) + "</span>";
 		});
 
 	var chart = base.append('svg')
@@ -80,8 +81,9 @@ function createScatterplot(data_index, variable = "birth_rate") {
 			.text(y_name);
 	
 	// select data
-	var data = dataset_scatter[data_index];
+	var data = totalData[data_index];
 	var scatterplot = dataset[data_index];
+	var currentFill;
 	
 	chart.selectAll("circle")
 		.data(data)

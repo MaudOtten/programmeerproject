@@ -20,6 +20,7 @@ function createMap(data) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
 				selectedCountry = geography.id;
 				createBarchart(geography.id);
+				// , geography.properties.name
 			});
 		},
 		
@@ -31,17 +32,17 @@ function createMap(data) {
 		// fillcolors range per 5%, default color set to gray
 		fills: {
 			"< 5%": '#FFFFFF', // 0 - 5 % Female researchers
-			"< 10%": '#E0FFE4', // 5 - 10 % Female researchers
-			"< 15%": '#C2FCC9', // 10 - 15 % Female researchers
-			"< 20%": '#9DFCA8', // 15 - 20 % Female researchers
-			"< 25%": '#83FC92', // 20 - 25 % Female researchers
-			"< 30%": '#85FF93',	// 25 - 30 % Female researchers
-			"< 35%": '#98FB98', // 30 - 35 % Female researchers
-			"< 40%": '#7FFF00', // 35 - 40 % Female researchers
-			"< 45%": '#00FF1E', // 40 - 45 % Female researchers
-			"< 50%": '#32CD32', // 45 - 50 % Female researchers
-			"> 50%": '#008000', // > 50 % Female researchers
-			defaultFill: '#CACACA' // No data
+			"< 10%": '#E6F1E5', // 5 - 10 % Female researchers
+			"< 15%": '#CEE3CC', // 10 - 15 % Female researchers
+			"< 20%": '#B6D5B2', // 15 - 20 % Female researchers
+			"< 25%": '#9DC799', // 20 - 25 % Female researchers
+			"< 30%": '#85BA80',	// 25 - 30 % Female researchers
+			"< 35%": '#6DAC66', // 30 - 35 % Female researchers
+			"< 40%": '#549E4D', // 35 - 40 % Female researchers
+			"< 45%": '#3C9033', // 40 - 45 % Female researchers
+			"< 50%": '#24821A', // 45 - 50 % Female researchers
+			"> 50%": '#0C7501', // > 50 % Female researchers
+			defaultFill: '#E6E6E6' // No data
 		},
 		
 		data: data

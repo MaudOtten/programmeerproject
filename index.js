@@ -10,32 +10,41 @@
 // set container size
 var container_width = 600;
 var container_height = 300;
-var barchartOn = 0;
+
+// keep track of selected country and year
 var selectedYear = 1;
 var selectedCountry = "PAK";
 
-// wait for all documents in index.html to load, then start creating visuals
+// global dataset for scatterplot
+var totalData = [];
+
+// wait for all documents in index.html to load, then parse dataset to create scatterplot data
 window.onload = function() {
 	
-	var totalData = [];
-	var index;		
+	// set arrays and values for iteration
 	var tempYear = [];
+	var index;
 	
+	// loop per year of total dataset
 	dataset.forEach( function(year) {		
 		index = 0;
-		var tempArray = [];
+		tempYear = [];
+		
+		// get keys (countrycodes) to add to data
 		var countryCodes = Object.keys(year);
 		
+		// loop per object containing data for one country
 		for (var count in year){
+			// get data on current country
 			var tempVar = year[count];
-			tempArray.push(countryCodes[index], tempVar.country_name, tempVar.female_in_research, tempVar.birth_rate, tempVar.expences_education);
-			tempYear.push(tempArray);
+			
+			// push 
+			tempYear.push([countryCodes[index], tempVar.country_name, tempVar.female_in_research, tempVar.birth_rate, tempVar.expences_education]);
+			
 			index += 1;
 		};
 		totalData.push(tempYear);
 	});
-	
-	console.log(totalData);
 	
 	// initiate default visualizations
 	createScatterplot(selectedYear);
@@ -61,9 +70,6 @@ function createSlider() {
 			});
 			
 			createScatterplot(selectedYear);
-			
-			if (barchartOn == 1) {
-				createBarchart(selectedCountry, selectedYear);
-			};
+			createBarchart(selectedCountry, selectedYear);
 		}));
 };

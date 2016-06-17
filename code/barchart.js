@@ -7,6 +7,8 @@
 	Part of final programming project 2016.
 */
 
+var chart;
+
 function createBarchart(countrycode = selectedCountry, data_index = selectedYear){
 	// remove previous bar chart
 	d3.select("#barchart").selectAll("*").remove();
@@ -38,7 +40,7 @@ function createBarchart(countrycode = selectedCountry, data_index = selectedYear
 		.orient("left")
 		.ticks(7);
 
-	var chart = d3.select("#barchart").append("svg")
+	chart = d3.select("#barchart").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
@@ -72,45 +74,58 @@ function createBarchart(countrycode = selectedCountry, data_index = selectedYear
 		.style("text-anchor", "end")
 		.text("% of total amount (female) R&D staff");
 
-		
+	
 	if (!(countrycode in dataset[data_index])) {
 		createDefaultBarchart();
 		return;
-	}
+	};
 	
 	var dataBarchart = dataset[data_index][countrycode]["barchart"];
 	
-/* 	var counter = 0;
-	
-	for (var i = 0; i < 14; i++) {
-		if (dataBarchart[i][1] != 0) {
-			counter += 1;
-			console.log("counting...");
-		};
-	};
-	
-	if (counter == 14) {
-		createDefaultBarchart();
-		return;
-	}; */
-	
-
-	
+	if (checkData(dataBarchart)) {
 	// add data and transform to upright chart
-	var bar = chart.selectAll("bar")
+	bar = chart.selectAll("bar")
 		.data(dataBarchart)
 	.enter().append("rect")
+		.attr("class", "bar")
 		.attr("x", function(d, i) { return i * barWidth + 3})
 		.attr("width", barWidth - 6)
-		.attr("y", function(d) { return y(d[1]); })
-		.attr("height", function(d) { return height - y(d[1]); })
+		.attr("y", function(d) { return d[1] == 0 ? 150 : y(d[1]); })
+		.attr("height", function(d) { return d[1] == 0 ? 80 :  height - y(d[1]); })
 		.style("fill", function(d, i) { 
+			if (d[1] == 0) {return "none"}
 			if (i % 2 == 0 || i == 0) 
 				{return "#32CD32"}
 			else
 				{return "#7C7C7C"}
-		})
-	.append("title")
+		});
+	};
+};
+
+function checkData(data) {
+	for (var i = 0; i < 14; i++) {
+		if (data[i][1] != 0) {
+			return true;
+		};
+	};
+	
+	createDefaultBarchart();
+};
+
+function createDefaultBarchart() {
+	
+	d3.select("div#barchart").select("g")
+	.append("text")
+	.attr("x", container_width / 3)
+	.attr("y", container_height / 2)
+	.style("font-size", "20px")
+	.style("text-transform", "uppercase")
+	.style("text-decoration", "underline")
+	.text("No data");
+};
+
+	
+/* 	.append("title")
 		.attr("class", "bartitle")
 		.text( function(d, i) { 
 			var p = 0;
@@ -119,19 +134,4 @@ function createBarchart(countrycode = selectedCountry, data_index = selectedYear
 			else
 				{p = (i - 1) / 2;}
 			return labels[p] + ": " + d[1] + "%"; 
-		});
-		
-	barchartOn = 1;
-
-};
-
-function createDefaultBarchart() {
-	d3.select("div#barchart").select("g")
-	.append("text")
-	.attr("x", container_width / 2)
-	.attr("y", container_height / 2)
-	.style("font-size", "20px")
-	.text("No data");
-	
-	barchartOn = 0;
-};
+		}); */

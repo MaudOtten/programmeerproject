@@ -1,5 +1,5 @@
 body {
-	background-color: #FFFFCC;
+	background-color: aliceblue;
 }
 
 h1 {
@@ -7,10 +7,14 @@ h1 {
 	border: 3px solid green;
 }
 
+.bar:hover {
+	border: 2px firebrick;
+}
+
 .wrap {
 	width: 50%;
-	margin: auto;
-	padding: 10px;
+	margin-left: 50px;
+	padding-right: 50px; 
 	display: inline;
 }
 
@@ -20,7 +24,7 @@ h1 {
 	height: 300px;
 }
 #slider {
-	margin: auto;
+	margin-left: 100px;
 	width: 1000px;
 }
 text {
@@ -30,9 +34,9 @@ text {
 }
 
 #worldmap {
-	margin: auto;
 	width: 1000px;
 	height: 500px;
+	margin-left: 100px;
 }
 
 svg.datamap {
@@ -50,6 +54,7 @@ svg.datamap {
 	display: inline;
 	float: right;
 	margin: 35px 0;
+	margin-left: 50px;
 }
 
 .datamaps-legend dt {
@@ -82,6 +87,7 @@ svg.datamap {
 .scatterTip {
   line-height: 1;
   font-weight: bold;
+  font-size: 15px;
   padding: 8px;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -97,8 +103,9 @@ svg.datamap {
   width: 100%;
   line-height: 1;
   color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
   position: absolute;
-
+  text-align: center;
 }
 
 /* Style northward tooltips differently */
