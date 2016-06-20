@@ -1,31 +1,48 @@
 body {
-	background-color: aliceblue;
+	background-color: #FFFFCC;
+	text-align: center;
+}
+
+body > * {
+	display: inline-block;
 }
 
 h1 {
+	display: block;
 	text-align: center;
-	border: 3px solid green;
+}
+
+.nodata {
+	stroke-width: 1px;
+	stroke: grey;
 }
 
 .bar:hover {
-	border: 2px firebrick;
+	fill: firebrick;
 }
 
-.wrap {
-	width: 50%;
-	margin-left: 50px;
-	padding-right: 50px; 
-	display: inline;
+.barTitle {
+	margin: auto;
+}
+
+.button-wrap {
+	display: block;
+	float: right;
 }
 
 .container {
-	display: inherit;
+	display: inline-block;
 	width: 600px;
 	height: 300px;
 }
+
 #slider {
-	margin-left: 100px;
+	display: block;
 	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	margin-top: 50px;
 }
 text {
   fill: black;
@@ -34,9 +51,12 @@ text {
 }
 
 #worldmap {
+	display: block;
 	width: 1000px;
 	height: 500px;
-	margin-left: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
 }
 
 svg.datamap {
@@ -44,17 +64,11 @@ svg.datamap {
 	margin: auto;
 }
 
-.datamaps-hoverinfo {
-	position: relative;
-}
-
 .datamaps-legend {
 	width: 120px;
 	height: 500px;
 	display: inline;
-	float: right;
 	margin: 35px 0;
-	margin-left: 50px;
 }
 
 .datamaps-legend dt {
@@ -75,14 +89,12 @@ svg.datamap {
 				
 .dot {
 	stroke: #000;
-	fill: #32CD32;
+	fill: #8e69b2;
 }
 
 .dot:hover {
 	fill: firebrick;
 }
-
-
 
 .scatterTip {
   line-height: 1;
@@ -113,4 +125,15 @@ svg.datamap {
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
+}
+
+.barTip {
+  line-height: 1;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
 }

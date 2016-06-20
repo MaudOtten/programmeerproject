@@ -11,26 +11,26 @@
 var container_width = 600;
 var container_height = 300;
 
-// keep track of selected country and year
+// keep track of scatterplot y-variable, selected country and year
 var selectedYear = 1;
 var selectedCountry = "PAK";
 
 // global dataset for scatterplot
-var totalData = [];
+var scatterData = [];
 
 // wait for all documents in index.html to load, then parse dataset to create scatterplot data
 window.onload = function() {
 	
-	// set arrays and values for iteration
+	// set arrays and values for scatterdata
 	var tempYear = [];
 	var index;
 	
-	// loop per year of total dataset
+	// get data for scatterplot per year in dataset
 	dataset.forEach( function(year) {		
 		index = 0;
 		tempYear = [];
 		
-		// get keys (countrycodes) to add to data
+		// get keys (countrycodes) to add to scatterdata
 		var countryCodes = Object.keys(year);
 		
 		// loop per object containing data for one country
@@ -38,16 +38,21 @@ window.onload = function() {
 			// get data on current country
 			var tempVar = year[count];
 			
-			// push 
-			tempYear.push([countryCodes[index], tempVar.country_name, tempVar.female_in_research, tempVar.birth_rate, tempVar.expences_education]);
+			// push to temp array
+			tempYear.push([countryCodes[index], tempVar.country_name, tempVar.female_in_research, tempVar.birth_rate, tempVar.expences_education, tempVar.fillKey]);
 			
 			index += 1;
 		};
-		totalData.push(tempYear);
+		
+		//push year data to scatterData
+		scatterData.push(tempYear);
 	});
 	
+	// set y-variable scatterplot to Birth rate as default 
+	var variable = "birth_rate";
+	
 	// initiate default visualizations
-	createScatterplot(selectedYear);
+	createScatterplot(selectedYear, variable);
 	createMap(dataset[selectedYear]);
 	createBarchart(selectedCountry, selectedYear);
 	

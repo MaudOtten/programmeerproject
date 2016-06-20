@@ -1,0 +1,46 @@
+<!--
+	Name: Maud Ottenheijm
+	Student nr: 10641785
+	
+	This file contains HTML code for the homepage of the Datavisualization 'Women in science'.
+
+	Part of final programming project 2016.
+-->
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+	<meta charset="utf-8">
+		<link rel="stylesheet" href="libs/d3.slider.css" /> 
+		<link rel="stylesheet" href="libs/WomenInScience.css" /> 
+		<script src = "libs/d3.js"></script>
+		<script src = "libs/topojson.min.js"></script>
+		<script src = "libs/datamaps.all.js"></script>
+		<script src = "libs/countrycodes.js"></script>
+		<script src = "libs/d3.slider.js"></script>
+		<script src="libs/d3.tip.v0.6.3.js"></script>
+	</head>
+	<body>
+	<h1>Women in science: where do we find them?</h1>
+			
+				<div class = "container" id = "other">
+				
+					<div class="button-wrap">	
+						<button id = "button-1" type="button" onclick="createScatterplot(selectedYear, &quot;birth_rate&quot;)">Birth Rate</button>
+						<button id = "button-2" type="button" onclick="createScatterplot(selectedYear, &quot;expences_education&quot;)">Education Expences</button>
+					</div>
+					
+					<div id = "graph"></div>
+				</div>
+				
+				<div class = "container" id = "barchart"></div>
+				<div id = "slider"></div>
+				<div id = "worldmap"></div>
+	</body>
+	<script src = "../data/data_all.js" defer></script>
+	<script src = "barchart.js" defer></script>
+	<script src = "scatterplot.js" defer></script>
+	<script src = "worldmap.js" defer></script>
+	<script src="index.js" defer></script>
+</html>

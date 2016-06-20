@@ -20,7 +20,7 @@
         popupTemplate: function(geography, data) {
           return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
         },
-        popupOnHover: false,
+        popupOnHover: true,
         highlightOnHover: true,
         highlightBorderColor: 'rgba(0, 0, 0, 0.2)',
 		highlightFillColor: '#FF5454',
@@ -551,15 +551,15 @@
     var self = this;
     element.on('mousemove', null);
     element.on('mousemove', function() {
-      var position = d3.mouse(this);
+      var position = d3.mouse(self.svg[0][0].parentNode);
       d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover')
-        .style('top', ( (position[1] + 30)) + "px")
+        .style('top', (position[1] - 30) + "px")
         .html(function() {
           var data = JSON.parse(element.attr('data-info'));
           //if ( !data ) return '';
           return options.popupTemplate(d, data);
         })
-        .style('left', ( position[0]) + "px");
+        .style('left', position[0] + "px");
     });
 
     d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover').style('display', 'block');

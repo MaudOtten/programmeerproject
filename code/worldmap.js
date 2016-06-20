@@ -31,18 +31,18 @@ function createMap(data) {
 		
 		// fillcolors range per 5%, default color set to gray
 		fills: {
-			"< 5%": '#FFFFFF', // 0 - 5 % Female researchers
-			"< 10%": '#E6F1E5', // 5 - 10 % Female researchers
-			"< 15%": '#CEE3CC', // 10 - 15 % Female researchers
-			"< 20%": '#B6D5B2', // 15 - 20 % Female researchers
-			"< 25%": '#9DC799', // 20 - 25 % Female researchers
-			"< 30%": '#85BA80',	// 25 - 30 % Female researchers
-			"< 35%": '#6DAC66', // 30 - 35 % Female researchers
-			"< 40%": '#549E4D', // 35 - 40 % Female researchers
-			"< 45%": '#3C9033', // 40 - 45 % Female researchers
-			"< 50%": '#24821A', // 45 - 50 % Female researchers
-			"> 50%": '#0C7501', // > 50 % Female researchers
-			defaultFill: '#E6E6E6' // No data
+			"< 5%": '#ddd1e8', // 0 - 5 % Female researchers
+			"< 10%": '#cdbcdd', // 5 - 10 % Female researchers
+			"< 15%": '#bda7d2', // 10 - 15 % Female researchers
+			"< 20%": '#ad92c8', // 15 - 20 % Female researchers
+			"< 25%": '#9e7ebd', // 20 - 25 % Female researchers
+			"< 30%": '#8e69b2',	// 25 - 30 % Female researchers
+			"< 35%": '#7e54a8', // 30 - 35 % Female researchers
+			"< 40%": '#6e3f9d', // 35 - 40 % Female researchers
+			"< 45%": '#5e2a92', // 40 - 45 % Female researchers
+			"< 50%": '#4f1588', // 45 - 50 % Female researchers
+			"> 50%": '#3f007d', // > 50 % Female researchers
+			defaultFill: '#f0f0f0' // No data
 		},
 		
 		data: data

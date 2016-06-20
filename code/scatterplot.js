@@ -7,7 +7,9 @@
 	Part of final programming project 2016.
 */
 
-function createScatterplot(data_index, variable = "birth_rate") {
+
+
+function createScatterplot(data_index, variable) {
 	
 	d3.select("#graph").selectAll("*").remove();
 	
@@ -53,16 +55,17 @@ function createScatterplot(data_index, variable = "birth_rate") {
 		.attr('class', 'scatterTip')
 		.offset([-10, 0])
 		.html(function(d) {
-			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(50, 205, 50)'>Women in research: " 
-			+ d[2] + "%</span><br/><span style='color: rgb(50, 205, 50)'>" + y_name + ": " + d3.format(".2n")(d[y_index]) + "</span>";
+			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(189,167,210)'>Women in research: " 
+			+ d[2] + "%</span><br/><span style='color: rgb(189,167,210)'>" + y_name + ": " + d3.format(".2n")(d[y_index]) + "</span>";
 		});
 
 	var chart = base.append('svg')
 		.attr("width", container_width)
 		.attr("height", container_height)
+		.style("position", "relative")
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-		
+
 	chart.call(tip);
 	
 	chart.append("g")
@@ -81,9 +84,7 @@ function createScatterplot(data_index, variable = "birth_rate") {
 			.text(y_name);
 	
 	// select data
-	var data = totalData[data_index];
-	var scatterplot = dataset[data_index];
-	var currentFill;
+	var data = scatterData[data_index];
 	
 	chart.selectAll("circle")
 		.data(data)
@@ -98,15 +99,17 @@ function createScatterplot(data_index, variable = "birth_rate") {
 				selectedCountry = d[0];
 				createBarchart(d[0]);
 			})
-			.on('mouseover', tip.show)
-			.on('mouseout', tip.hide);
-/* 			.on("mouseover", function(d) {
+			.on("mouseover", function(d) {
+				tip.show(d);
 				var updateCountry = {};
 				updateCountry[d[0]] = '#FF5454';
 				Map.updateChoropleth(updateCountry);
 			})
 			.on("mouseout", function(d) { 
-				Map.updateChoropleth(null, {reset: true}); }) */
-	
+				tip.hide(d);
+				var updateCountry = {};
+				updateCountry[d[0]] = {fillKey: d[5]};
+				Map.updateChoropleth(updateCountry);
+			});
 };
 
