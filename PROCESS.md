@@ -52,7 +52,10 @@ Vandaag labels gemaakt voor de barchart. Heel veel geprobeerd (per bar appenden,
 Het is gelukt om de barchart data te laten zien in bars! On click op de cirkels van de scatterplot wordt de barchart ge-updated. De scatterplot heeft een tooltip mbv d3.tip. Het gekozen land wordt onthouden dmv een globale variabele (net als het geselecteerde jaar). Ook via de world map wordt de barchart aangepast. Ook de color coding van de world map is enigszins aangepast, ik ga voor een range van groene kleuren.
 
 # Week 3 Day 4
-
+De data voor de scatterplot wordt nu in een variabele gestopt op window.onload dmv itereren door de totale dataset heen. Hierdoor hoef ik niet meer twee aparte datasets in te laden. Ook worden de visualisaties pas aangeroepen als de pagina geladen is (en de data dus ook). De time slider wordt in een aparte functie gemaakt. De css code heb ik apart in een css file gedaan voor overzicht.
 
 # Week 3 Day 5
-Andere color range geprobeerd met groen. In de presentatie werd er geopperd toch een andere kleur te gebruiken ivm associaties met bossen. Hier even over nadenken. Ook heb ik een barchart label geprobeerd toe te voegen. Dit heeft nog weinig opgeleverd.
+Andere color range geprobeerd met groen. In de presentatie werd er geopperd toch een andere kleur te gebruiken ivm associaties met bossen. Hier even over nadenken. Ook heb ik een barchart label geprobeerd toe te voegen. Dit heeft nog weinig opgeleverd. De scatterplot knoppen met bijbehorende functie werken, maar de plaatsing ervan is nog wel lastig.
+
+# Week 4 Day 1
+Mijn definitieve color scale gekozen: paars! Groen werd teveel met bos/natuur/klimaat geassocieerd. Roze vond ik geen optie, maar stereotypes helpen wel bij onbewuste processen. Daarom een gulden middenweg gekozen met wit-paars. De bars van de bar chart hebben tooltips met de waarde erin. De landen lichten op als er over de corresponderende dot in de scatterplot gehoverd wordt (dit lukte vorige week niet, maar met een andere aanpak voor het terugveranderen van de kleur nu wel!). Ook de titel van de barchart met daarin de landnaam staat nu goed gepositioneerd.
