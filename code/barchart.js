@@ -9,7 +9,7 @@
 
 var chart;
 
-function createBarchart(countrycode = selectedCountry, data_index = selectedYear){
+function createBarchart(countrycode, data_index){
 	// remove previous bar chart
 	d3.select("#barchart").selectAll("*").remove();
 	
@@ -17,7 +17,7 @@ function createBarchart(countrycode = selectedCountry, data_index = selectedYear
 	var labels = [["Nature Sc"], ["T & E *"], ["Agriculture"], ["Medical Sc"], ["Social Sc"], ["Humanities"], ["N.S."]];
 	
 	// define margin, range and scale values
-	var margin = {top: 20, right: 20, bottom: 30, left: 50},
+	var margin = {top: 20, right: 20, bottom: 40, left: 50},
 		width = container_width - margin.left - margin.right,
 		height = container_height - margin.top - margin.bottom;
 		
@@ -106,6 +106,16 @@ function createBarchart(countrycode = selectedCountry, data_index = selectedYear
 	// get data of chosen country
 	var dataBarchart = dataset[data_index][countrycode]["barchart"];
 	
+	// Set a title for the chart with country name
+	chart.append("g").attr("class", "barTitle")
+	.append("text")
+		.style("font-size", "20px")
+		.style("text-transform", "uppercase")
+		.style("text-decoration", "underline")
+		.attr("x", container_width / 2.5)
+		.attr("y", 0)
+		.text(dataset[data_index][countrycode].country_name.toString());
+	
 	// check if data contains only nulls, if not create bar chart
 	if (checkData(dataBarchart)) {
 		
@@ -125,25 +135,16 @@ function createBarchart(countrycode = selectedCountry, data_index = selectedYear
 			})
 			.attr("width", barWidth - 6)
 			.attr("y", function(d) { return d[1] == 0 ? 150 : y(d[1]); })
-			.attr("height", function(d) { return d[1] == 0 ? 100 :  height - y(d[1]); })
+			.attr("height", function(d) { return d[1] == 0 ? 90 :  height - y(d[1]); })
 			.style("fill", function(d, i) { 
 				if (d[1] == 0) { return "none"}
 				if (i % 2 == 0 || i == 0) 
-					{return "rgb(108, 57, 158)"}
+					{return "#6c399e"}
 				else
-					{return "rgb(173, 173, 173)"}
+					{return "#5F9F9F"}
 			})
 			.on('mouseover', function(d, i) { if (d[1] == 0) {return null}; return (i % 2 == 0 || i == 0) ? tip_female.show(d) : tip_total.show(d)})
 			.on('mouseout', function(d, i) { if (d[1] == 0) {return null}; return (i % 2 == 0 || i == 0) ? tip_female.hide(d) : tip_total.hide(d)});				
-		
-		// Set a title for the chart with country name
-		chart.append("g").attr("class", "barTitle")
-		.append("text")
-			.style("text-transform", "uppercase")
-			.style("text-decoration", "underline")
-			.attr("x", container_width / 3)
-			.attr("y", 0)
-			.text(dataset[data_index][countrycode].country_name.toString());
 	};
 };
 
@@ -165,6 +166,5 @@ function createDefaultBarchart() {
 	.attr("y", container_height / 2.5)
 	.style("font-size", "20px")
 	.style("text-transform", "uppercase")
-	.style("text-decoration", "underline")
 	.text("No data");
 };

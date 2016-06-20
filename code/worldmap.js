@@ -6,21 +6,28 @@
 	
 	Part of final programming project 2016.
 */
+
+// global Map
 var Map;
 
+
+/*
+	This function initializes a world map, color coded for the amount of female researchers.
+	Default year is 2004, color coded on a white-purple scale.
+*/
 function createMap(data) {
+	
 	// initiate world map
 	Map = new Datamap({
 		
 		// get html element for drawing world map
 		element: document.getElementById("worldmap"),
 		
-		// function for click event to facilitate second visualization (bar chart)
+		// function for click event to update bar chart
 		done: function(datamap) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
 				selectedCountry = geography.id;
-				createBarchart(geography.id);
-				// , geography.properties.name
+				createBarchart(geography.id, selectedYear);
 			});
 		},
 		
@@ -50,7 +57,7 @@ function createMap(data) {
 	 
 	// set legend, title and labels
 	Map.legend({
-		legendTitle : "% Female researchers",
+		legendTitle : "Female researchers (% of total)",
 		defaultFillName: "No data",
 		labels: {
 			"< 5%" : "Less then 5% ",

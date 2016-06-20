@@ -3,6 +3,7 @@ body {
 	text-align: center;
 }
 
+/* All elements in body are displayed inline */
 body > * {
 	display: inline-block;
 }
@@ -12,44 +13,36 @@ h1 {
 	text-align: center;
 }
 
-.nodata {
-	stroke-width: 1px;
-	stroke: grey;
-}
-
-.bar:hover {
-	fill: firebrick;
-}
-
-.barTitle {
-	margin: auto;
-}
-
-.button-wrap {
-	display: block;
-	float: right;
-}
-
-.container {
-	display: inline-block;
-	width: 600px;
-	height: 300px;
-}
-
-#slider {
-	display: block;
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 50px;
-	margin-top: 50px;
-}
 text {
   fill: black;
   font: 13px sans-serif;
   text-anchor: middle;
 }
 
+/* Wrap for scatterplot buttons */
+.button-wrap {
+	display: block;
+	float: right;
+}
+
+/* Container for scatterplot and bar chart */
+.container {
+	display: inline-block;
+	width: 600px;
+	height: 300px;
+}
+
+/* Time slider centered on page */
+#slider {
+	display: block;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+
+/* Datamaps centered on page */
 #worldmap {
 	display: block;
 	width: 1000px;
@@ -58,12 +51,13 @@ text {
 	margin-right: auto;
 	position: relative;
 }
-
+	
 svg.datamap {
 	position:relative;
 	margin: auto;
 }
 
+/* Legend for datamaps, forming a block next to map */		
 .datamaps-legend {
 	width: 120px;
 	height: 500px;
@@ -86,7 +80,8 @@ svg.datamap {
   fill: none;
   stroke: #000;
 }
-				
+
+/* Purple scatterplot dots, red on hover*/				
 .dot {
 	stroke: #000;
 	fill: #8e69b2;
@@ -96,6 +91,7 @@ svg.datamap {
 	fill: firebrick;
 }
 
+/* Black tooltip for scatterplot dots */
 .scatterTip {
   line-height: 1;
   font-weight: bold;
@@ -107,7 +103,7 @@ svg.datamap {
   text-align: center;
 }
 
-/* Creates a small triangle extender for the tooltip */
+/* Creates an arrow underneath the tooltip */
 .scatterTip:after {
   box-sizing: border-box;
   display: inline;
@@ -125,6 +121,16 @@ svg.datamap {
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
+}
+
+/* Barchart bars, empty 'no data' and with tooltip */
+.nodata {
+	stroke-width: 1px;
+	stroke: grey;
+}
+
+.barTitle {
+	margin: auto;
 }
 
 .barTip {

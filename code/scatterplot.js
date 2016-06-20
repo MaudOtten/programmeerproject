@@ -28,7 +28,7 @@ function createScatterplot(data_index, variable) {
 	var base = d3.select("#graph");
 
 	// set margin for plot
-	var margin = {top: 20, right: 20, bottom: 30, left: 50},
+	var margin = {top: 20, right: 20, bottom: 40, left: 50},
 		width = container_width - margin.left - margin.right,
 		height = container_height - margin.top - margin.bottom;
 
@@ -71,7 +71,13 @@ function createScatterplot(data_index, variable) {
 	chart.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis);
+		.call(xAxis)
+		.append("text")
+			.attr("y", 25)
+			.attr("x", width - margin.right)
+			.attr("dy", ".71em")
+			.style("text-anchor", "end")
+			.text("Female researchers (% of total)");
 
 	chart.append("g")
 		.attr("class", "y axis")
@@ -97,7 +103,7 @@ function createScatterplot(data_index, variable) {
 			.style("display", function(d) { return d[2] == 0.0 || d[3] == 0.0  || d[4] == 0.0 ? "none" : null; })
 			.on('click', function(d) {
 				selectedCountry = d[0];
-				createBarchart(d[0]);
+				createBarchart(d[0], selectedYear);
 			})
 			.on("mouseover", function(d) {
 				tip.show(d);

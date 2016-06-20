@@ -12,8 +12,8 @@ var container_width = 600;
 var container_height = 300;
 
 // keep track of scatterplot y-variable, selected country and year
-var selectedYear = 1;
-var selectedCountry = "PAK";
+var selectedYear = 4;
+var selectedCountry = "none";
 
 // global dataset for scatterplot
 var scatterData = [];
@@ -63,7 +63,7 @@ window.onload = function() {
 function createSlider() {
 	
 	// D3 time slider
-	d3.select('#slider').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2000).max(2012).value(2001).step(1)
+	d3.select('#slider').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2000).max(2012).value(2004).step(1)
 		.on("slide", function(evt, value) {
 			selectedYear = value - 2000;
 			

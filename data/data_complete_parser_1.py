@@ -1,9 +1,15 @@
 # Name: Maud Ottenheijm
 # Student nr: 10641785
+# 
+# This file contains code for preprocessing the dataset from UNESCO on women in science, 
+# combining it with birth rate data government expences data (World Bank). Outputfile 'data_all.js' separates data
+# per year, then per country with all values in one object. Data for a bar chart is formatted in an array within the country object.
+#
+# Part of final programming project 2016.
 
-# This file contains code for writing csv to json format. Takes input from InternetUsersPer100.csv, outputs in 
-# data.json. Part of D3 Datamaps assignment week 5, Data Processing.
 
+
+# set of country codes and respective country name
 country_codes = [
     ["af", "AFG", "Afghanistan"],
     ["ax", "ALA", "Aland Islands"],
@@ -255,7 +261,7 @@ country_codes = [
     ["zm", "ZMB", "Zambia"],
     ["zw", "ZWE", "Zimbabwe"] ]
 
-# set all data to null
+# set of data values to be extracted, set to 0
 female_in_research = 0
 birth_rate = 0
 expences_education = 0
@@ -276,6 +282,7 @@ female_social = 0
 female_humanities = 0
 female_notspecified = 0
 
+# array of years in dataset
 years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012]
 
 # open first datafile with 'Women in Science' data
@@ -294,14 +301,14 @@ dataFile3 = open('expenditure_education_percentage.csv', 'rb')
 Reader3 = csv.reader(dataFile3)
 data3 = list(Reader3)
 
-# create json-string for writing
+# create json-string for output
 json = ""
 
 # create outputfile
 outputFile = open('data_all.js', 'w')
 outputFile.write("var dataset = [ ")
 
-# calculate fillKey for worldmap
+# this function calculates fillKeys for worldmap based on amount of females in research
 def define_fillKey( value ):
 	fillKey = "defaultFill"
 
@@ -331,47 +338,52 @@ def define_fillKey( value ):
 	return fillKey
 
 
-# loop through datasets per year in data
+# iterate over input datasets per year in data
 for year in years:
 	indx = years.index(year)
 	
 	json = "\n{"
 	
+	# preset first country name, counter for resetting data to 0
 	country_name = "Albania"
 	counter = 0
 	
+	# iterate over dataset per row
 	for row in data[1:]:
-	
+		
+		# if new country is reached
 		if str(row[0]) != country_name:
-						
+			
+			# get country code
 			countryCode = "Unknown";
 			
 			for code in country_codes:
 				if country_name == country_codes[country_codes.index(code)][2]:
 					countryCode = country_codes[country_codes.index(code)][1]
 					break
-					
+			
+			# define fillKey with define_fillKey function
 			fillKey = define_fillKey(float(female_in_research))
 			
+			# iterate over dataset 2 for birth rate data
 			for row2 in data2[1:]:
 				
 				if row2[2] == countryCode and row2[4] == str(year):
 					birth_rate = row2[6]
 			
+			# iterate over dataset 3 for education expences data
 			for row3 in data3[1:]:
 				
 				if row3[2] == countryCode and row3[4] == str(year):
 					expences_education = row3[6]
 			
-			# if total_nature == '0' and total_engineering == '0' and total_agriculture == '0' and total_medicine == '0' and total_social == '0' and total_humanities == '0' and total_notspecified == '0' and female_nature == '0' and female_engineering == '0' and female_agriculture == '0' and female_medicine == '0' and female_social == '0' and female_humanities == '0' and female_notspecified == '0':
-				# print 'here'
-				# json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + "}, "
-
+			# create bar chart array of data in string
 			barchart = "barchart: [[\"female_nature\", " + str(female_nature) + "], [\"total_nature\", " + str(total_nature) +"], [\"female_engineering\", " + str(female_engineering) + "], [\"total_engineering\", " + str(total_engineering) + "], [\"female_agriculture\", " + str(female_agriculture) + "], [\"total_agriculture\", " + str(total_agriculture) + "], [\"female_medicine\", " + str(female_medicine) + "], [\"total_medicine\", " + str(total_medicine) + "], [\"female_social\", " + str(female_social) + "], [\"total_social\", " + str(total_social) + "], [\"female_humanities\", " + str(female_humanities) + "], [\"total_humanities\", " + str(total_humanities) + "], [\"female_notspecified\", " + str(female_notspecified) +"], [\"total_notspecified\", " + str(total_notspecified) + "]]"
+			
+			# create country object of data in json string
 			json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + ", " + barchart + "}, "
 			
-			# json += ",  + str(total_nature) + ", : " + str(female_nature) + ", total_engineering: " + str(total_engineering) + ", female_engineering: " + str(female_engineering) + ", total_agriculture: " + str(total_agriculture) + ", female_agriculture: " + str(female_agriculture) + ", total_medicine: " + str(total_medicine) + ", female_medicine: " + str(female_medicine) + ", total_social: " + str(total_social) + ", female_social: " + str(female_social) + ", total_humanities: " + str(total_humanities) + ", female_humanities: " + str(female_humanities) + ", total_notspecified: " + str(total_notspecified) + ", female_notspecified: " + str(female_notspecified) + "}, "
-
+			# if iteration is past the first country
 			if counter is not 0:
 				# set data to null
 				female_in_research = 0
@@ -395,8 +407,10 @@ for year in years:
 				female_humanities = 0
 				female_notspecified = 0
 			
+			# get current country name
 			country_name = str(row[0])
 		
+		# Get value of current row's indicator
 		if row[1] == "Researchers (FTE) - % Female":
 			female_in_research = row[indx + 2]
 		
@@ -450,40 +464,48 @@ for year in years:
 		
 		counter += 1
 	
+	# reset country code for last country
 	countryCode = "Unknown";
-			
+	
+	# get last country code
 	for code in country_codes:
 		if country_name == country_codes[country_codes.index(code)][2]:
 			countryCode = country_codes[country_codes.index(code)][1]
 			break
-			
+	
+	# define fillKey with define_fillKey function
 	fillKey = define_fillKey(float(female_in_research))
 	
+	# iterate over dataset 2 for birth rate data
 	for row2 in data2[1:]:
 		
 		if row2[2] == countryCode and row2[4] == str(year):
 			birth_rate = row2[6]
 	
+	# iterate over dataset 3 for education expences data
 	for row3 in data3[1:]:
 		
 		if row3[2] == countryCode and row3[4] == str(year):
 			expences_education = row3[6]
 
-	# if total_nature is '0' and total_engineering == '0' and total_agriculture == '0' and total_medicine == '0' and total_social == '0' and total_humanities == '0' and total_notspecified == '0' and female_nature == '0' and female_engineering == '0' and female_agriculture == '0' and female_medicine == '0' and female_social == '0' and female_humanities == '0' and female_notspecified == '0':
-		# print 'here'
-		# json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + "}, "
-
+	# create bar chart array of data in string
 	barchart = "barchart: [[\"female_nature\", " + str(female_nature) + "], [\"total_nature\", " + str(total_nature) +"], [\"female_engineering\", " + str(female_engineering) + "], [\"total_engineering\", " + str(total_engineering) + "], [\"female_agriculture\", " + str(female_agriculture) + "], [\"total_agriculture\", " + str(total_agriculture) + "], [\"female_medicine\", " + str(female_medicine) + "], [\"total_medicine\", " + str(total_medicine) + "], [\"female_social\", " + str(female_social) + "], [\"total_social\", " + str(total_social) + "], [\"female_humanities\", " + str(female_humanities) + "], [\"total_humanities\", " + str(total_humanities) + "], [\"female_notspecified\", " + str(female_notspecified) +"], [\"total_notspecified\", " + str(total_notspecified) + "]]"
+	
+	# create country object of data in json string
 	json += "\"" + str(countryCode) + "\" : { country_name: \"" + str(country_name) + "\", fillKey: \"" + fillKey + "\", female_in_research: " + str(float(female_in_research)) + ", birth_rate: " + str(birth_rate) + ", expences_education: " + str(expences_education) + ", " + barchart + "}, "
 			
-	
+	# end final object without comma and close year object
 	json = json[0:-2] + "}"
 	
+	# if not final year, put comma after object
 	if indx < 12:
 		json += ","
+	
+	# write output string in output file
 	outputFile.write(json)
 
-	
+
+# end, write and close file
 end_of_file = "\n];"
 outputFile.write(end_of_file)
 outputFile.close()

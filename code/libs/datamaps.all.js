@@ -18,8 +18,8 @@
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.2)',
         popupTemplate: function(geography, data) {
-          return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
-        },
+          return data["female_in_research"] > 0 ? '<div class="hoverinfo"><strong>' + geography.properties.name + ':</strong><br><span>' + data["female_in_research"] + '% female researchers</span></div>' : '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>'
+		},
         popupOnHover: true,
         highlightOnHover: true,
         highlightBorderColor: 'rgba(0, 0, 0, 0.2)',
@@ -553,7 +553,7 @@
     element.on('mousemove', function() {
       var position = d3.mouse(self.svg[0][0].parentNode);
       d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover')
-        .style('top', (position[1] - 30) + "px")
+        .style('top', (position[1] - 50) + "px")
         .html(function() {
           var data = JSON.parse(element.attr('data-info'));
           //if ( !data ) return '';
