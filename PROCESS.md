@@ -37,8 +37,22 @@ De data voor maps weer aangepast en gekeken naar hoe de barchart het best de dat
 en wederom gekeken naar een verbeterde css voor de html pagina.
 
 # Week 2 Day 4
-Data voor barchart kloppend gemaakt zodat die makkelijk gelezen en getekend kan worden. Het schalen van de barchart is echter nog niet correct. Het verandert wel obv klikken
-een land in de kaart.
+Data voor barchart kloppend gemaakt zodat die makkelijk gelezen en getekend kan worden. Het schalen van de barchart is echter nog niet correct. Het verandert wel obv klikken een land in de kaart.
 
 # Week 2 Day 5
 Weinig vooruitgang. Vooral gekloot met de legenda van de kaart. Data klopt nu helemaal voor barchart en kaart, eerste poging tot scatterplot data.
+
+# Week 3 Day 1
+Vandaag heb ik mijn scatterplot gebouwd! In 1 dag de data erop aangepast (wel nog in een apart databestand, dit wil ik nog aanpassen). De grafiek past zich al aan obv de time slider. Er is nog geen mogelijkheid om de y-variabele te veranderen, maar beide kunnen wel worden meegegeven bij het aanmaken van de grafiek. Y-as wordt daarop ook aangepast. Het niet weergeven van de nul-data (lege data) heb ik opgelost door de cirkels met 0 als x of y op display:none te zetten. Ik wil kijken of ik dit iets eleganter kan doen. Ook een begin gemaakt aan de bar chart. Het tekenen van de assen is makkelijk, de bars neerzetten is nog lastig.
+
+# Week 3 Day 2
+Vandaag labels gemaakt voor de barchart. Heel veel geprobeerd (per bar appenden, aan x-as appenden met ticks), maar dit werkte allemaal niet. Heb even het idee van geroteerde labels losgelaten en ze naast elkaar onder de x-as neegezet. Niet helemaal aligned met de bars, maar het komt in de buurt! Verder heb ik wat structuur aangebracht in het aanroepen van de data en functies (met een window.onload). Hiermee wil ik voorkomen dat de pagina crasht.
+
+# Week 3 Day 3
+Het is gelukt om de barchart data te laten zien in bars! On click op de cirkels van de scatterplot wordt de barchart ge-updated. De scatterplot heeft een tooltip mbv d3.tip. Het gekozen land wordt onthouden dmv een globale variabele (net als het geselecteerde jaar). Ook via de world map wordt de barchart aangepast. Ook de color coding van de world map is enigszins aangepast, ik ga voor een range van groene kleuren.
+
+# Week 3 Day 4
+
+
+# Week 3 Day 5
+Andere color range geprobeerd met groen. In de presentatie werd er geopperd toch een andere kleur te gebruiken ivm associaties met bossen. Hier even over nadenken. Ook heb ik een barchart label geprobeerd toe te voegen. Dit heeft nog weinig opgeleverd.
