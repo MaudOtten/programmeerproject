@@ -1,6 +1,5 @@
-# Maud Ottenheijm, Programmeerproject 2016
-
-## Women in Science: where do we find them?
+# Women in Science: where do we find them?
+Maud Ottenheijm, Programmeerproject 2016
 
 #### Doel
 
