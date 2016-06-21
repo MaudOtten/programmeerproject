@@ -13,8 +13,8 @@ De doelgroep voor deze visualizatie omvat mensen die onderzoek doen in gender & 
 
 Screenshot:
 
-![](doc/print_screen_top.png)
-![](doc/print_screen_bottom.png)
+![](doc/rsz_print_screen_top.png)
+![](doc/rsz_print_screen_bottom.png)
 
 #### Data bronnen / libraries
 Deze visualizatie is mogelijk gemaakt door onder genoemde bronnen. Alle rechten zijn voorbehouden aan de rechtmatige eigenaar.
