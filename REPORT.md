@@ -1,6 +1,8 @@
+## Women in Science: where do we find them?
+
 ### Introductie
 Deze visualisatie kijkt naar de genderbalans in wetenschap over de hele wereld. Het percentage vrouwen werkzaam in verschillende
-landen, jaren en vakgebieden wordt vanuit diverse oogpunten bekeken en gerelateerd aan algemene indicatoren van een land (vb. geboortecijfer)
+landen, jaren en vakgebieden wordt vanuit diverse oogpunten bekeken en gerelateerd aan algemene indicatoren van een land (vb. geboortecijfer). Voor screenshot, zie eind van dit bestand.
 
 ### Technische ontwerp
 De structuur van mijn code komt voor het grootste gedeelte overeen met mijn initiele ontwerp. De html file van de main pagina(index.html) roept de scripts, libraries en de (vooraf verwerkte) dataset aan. Vanuit index.js wordt vervolgens de dataset geparsed voor het organiseren van de scatterplot data. Vervolgens worden de andere scripts aangeroepen om elk een visualisatie te bouwen. Elke visualisatie wordt in een aparte functie uit een aparte file gebouwd. Ook bevat index.js de functie die de slider maakt waarin de functies voor de visualisaties ook worden aangeroepen.
