@@ -2,13 +2,23 @@
 	Name: Maud Ottenheijm
 	Student nr: 10641785
 	
-	...
+	This file contains function createBarchart for creating a bar chart showing data on one country. Bars show the relative amount
+	of (female) researchers in a specific scientific discipline. Bars show a tooltip on hover, bar has the selected 
+	country's name as title.
+	createDefaultBarchart makes a barchart showing only the axes and 'NO DATA'
+	checkData checks if all data points are 0 (no data). If true, it calls createDefaultBarchart to show no data.
 	
 	Part of final programming project 2016.
 */
 
-var chart;
+// global chart
+var barChart;
 
+
+/*
+	create bar chart when scatterplot is clicked or world map is clicked
+	default barchart is shown for countries not in dataset, or when all data is 0
+*/
 function createBarchart(countrycode, data_index){
 	// remove previous bar chart
 	d3.select("#barchart").selectAll("*").remove();
@@ -43,21 +53,21 @@ function createBarchart(countrycode, data_index){
 		.ticks(7);
 	
 	// define svg for chart
-	chart = d3.select("#barchart").append("svg")
+	barChart = d3.select("#barchart").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// append x-axis
-	chart.append("g")
+	barChart.append("g")
 		.attr("class", "axis")
 		.attr("id", "x-axis")
 		.attr("transform", "translate(0," + height + ")")
 		.call(xAxis);
 	
 	// append labels on x-axis
-	chart.select("#x-axis").selectAll("text")
+	barChart.select("#x-axis").selectAll("text")
 		.data(labels)
 	.enter().append("text")
 		.attr("x", function(d, i) {return i * 75 + 40;})
@@ -66,7 +76,7 @@ function createBarchart(countrycode, data_index){
 		.attr("text-anchor", "start")
 		.text(function(d) {return d});
 		
-	chart.select("#x-axis").append("text")
+	barChart.select("#x-axis").append("text")
 			.attr("y", 25)
 			.attr("x", width - margin.right)
 			.attr("dy", ".71em")
@@ -75,7 +85,7 @@ function createBarchart(countrycode, data_index){
 			.text("Scientific disciplines");
 	
 	// append y-axis
-	chart.append("g")
+	barChart.append("g")
 		.attr("class", "axis")
 		.attr("id", "y-axis")
 		.call(yAxis)
@@ -115,7 +125,7 @@ function createBarchart(countrycode, data_index){
 	var dataBarchart = dataset[data_index][countrycode]["barchart"];
 	
 	// Set a title for the chart with country name
-	chart.append("g").attr("class", "barTitle")
+	barChart.append("g").attr("class", "barTitle")
 	.append("text")
 		.style("font-size", "20px")
 		.style("text-transform", "uppercase")
@@ -127,11 +137,11 @@ function createBarchart(countrycode, data_index){
 	// check if data contains only nulls, if not create bar chart
 	if (checkData(dataBarchart)) {
 		
-		chart.call(tip_female);
-		chart.call(tip_total);
+		barChart.call(tip_female);
+		barChart.call(tip_total);
 		
 		// add data and transform to upright chart. If data is zero (no data), append empty bar
-		bar = chart.selectAll("bar")
+		bar = barChart.selectAll("bar")
 			.data(dataBarchart)
 		.enter().append("rect")
 			.attr("class", function(d) { return d[1] == 0 ? "nodata" : "bar"})
@@ -156,18 +166,10 @@ function createBarchart(countrycode, data_index){
 	};
 };
 
-function checkData(data) {
-	for (var i = 0; i < 14; i++) {
-		if (data[i][1] != 0) {
-			return true;
-		};
-	};
-	
-	createDefaultBarchart(data);
-};
-
+/*
+	create default barchart for countries with no data
+*/
 function createDefaultBarchart() {
-	
 	d3.select("div#barchart").select("g")
 	.append("text")
 	.attr("x", container_width / 2.5)
@@ -175,4 +177,20 @@ function createDefaultBarchart() {
 	.style("font-size", "20px")
 	.style("text-transform", "uppercase")
 	.text("No data");
+};
+
+/*
+	takes barchart array of datapoints, checks if all are 0 (no data)
+	if so, calls on createDefaultBarchart, otherwise returns true
+*/
+function checkData(data) {
+	// loop through all 14 datapoints, check for 0
+	for (var i = 0; i < 14; i++) {
+		if (data[i][1] != 0) {
+			return true;
+		};
+	};
+	
+	// create default barchart
+	createDefaultBarchart(data);
 };

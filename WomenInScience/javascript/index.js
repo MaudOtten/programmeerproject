@@ -2,7 +2,11 @@
 	Name: Maud Ottenheijm
 	Student nr: 10641785
 	
-	... 
+	This file is called upon by index.html. First it parses data from data_all.js (containing a global dataset variable 
+	'dataset') and calls on createScatterplot, createBarchart and createMap to create visualizations on loading of window.
+	Also included is function createSlider to create a time slider with functions to update visualizations accordingly.
+	
+	Includes libraries D3, D3.slider, Datamaps, Topojson and D3.tip.v0.6.3.
 	
 	Part of final programming project 2016.
 */
@@ -15,10 +19,16 @@ var container_height = 300;
 var selectedYear = 4;
 var selectedCountry = "none";
 
-// global dataset for scatterplot
+// global dataset and y-variable for scatterplot
 var scatterData = [];
+var variable;
 
-// wait for all documents in index.html to load, then parse dataset to create scatterplot data
+
+/*
+	wait for all documents included in index.html to load, then parse dataset 
+	to create scatterplot data. Scatterplot, barchart, time slider and world map 
+	are drawn subsequently
+*/
 window.onload = function() {
 	
 	// set arrays and values for scatterdata
@@ -49,7 +59,7 @@ window.onload = function() {
 	});
 	
 	// set y-variable scatterplot to Birth rate as default 
-	var variable = "birth_rate";
+	variable = "birth_rate";
 	
 	// initiate default visualizations
 	createScatterplot(selectedYear, variable);
@@ -68,14 +78,17 @@ window.onload = function() {
 	createSlider();
 };
 
+/*
+	draw a time slider to select year in dataset, adjust visualizations accordingly
+*/
 function createSlider() {
-	
-	// D3 time slider
+	// call d3 time slider library
 	d3.select('#slider').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2000).max(2012).value(2004).step(1)
 		.on("slide", function(evt, value) {
+			// on slide event, update all visualizations for selected year
 			selectedYear = value - 2000;
 			
-			// on slide event, update all visualizations for selected year
+			// update map using updateChoropleth with smooth transition
 			d3.transition()
 			.duration(500)
 			.each(function() {

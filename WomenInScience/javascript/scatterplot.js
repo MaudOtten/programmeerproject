@@ -2,17 +2,23 @@
 	Name: Maud Ottenheijm
 	Student nr: 10641785
 	
-	...
+	This file contains a function to create a scatterplot on data from selected year. Y-variable is adjustable 
+	through button click (buttons in html file). 
+	Dots in plot show tooltip on hover, and create a bar chart for the respective country on click. 
 	
 	Part of final programming project 2016.
 */
 
 
-
+/*
+	draw scatterplot for selected year with selected y-variable, dots with click-function and hover info
+*/
 function createScatterplot(data_index, variable) {
 	
+	// remove current graph
 	d3.select("#graph").selectAll("*").remove();
 	
+	// check which y-variable is selected, adjust y index, domain and name accordingly
 	if (variable == "birth_rate") {
 		y_index = 3;
 		y_domain = 8;
@@ -51,23 +57,15 @@ function createScatterplot(data_index, variable) {
 		.scale(y)
 		.orient("left");
 	
-	var tip = d3.tip()
-		.attr('class', 'toolTip')
-		.offset([-10, 0])
-		.html(function(d) {
-			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(189,167,210)'>Women in research: " 
-			+ d[2] + "%</span><br/><span style='color: rgb(189,167,210)'>" + y_name + ": " + d3.format(".2n")(d[y_index]) + "</span>";
-		});
-
+	// append svg
 	var chart = base.append('svg')
 		.attr("width", container_width)
 		.attr("height", container_height)
 		.style("position", "relative")
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-	chart.call(tip);
 	
+	// append x-axis
 	chart.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
@@ -80,6 +78,7 @@ function createScatterplot(data_index, variable) {
 			.style("text-decoration", "underline")
 			.text("Female researchers (% of total)");
 
+	// append y-axis
 	chart.append("g")
 		.attr("class", "y axis")
 		.call(yAxis)
@@ -89,10 +88,23 @@ function createScatterplot(data_index, variable) {
 			.attr("dy", ".71em")
 			.style("text-anchor", "end")
 			.text(y_name);
+			
+	// set tooltip with custom info, using d3.tip.v0.6.3 library
+	var tip = d3.tip()
+		.attr('class', 'toolTip')
+		.offset([-10, 0])
+		.html(function(d) {
+			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(189,167,210)'>Women in research: " 
+			+ d[2] + "%</span><br/><span style='color: rgb(189,167,210)'>" + y_name + ": " + d3.format(".2n")(d[y_index]) + "</span>";
+		});
 	
-	// select data
+	chart.call(tip);
+	
+	// select year in dataset
 	var data = scatterData[data_index];
 	
+	// append circle for each datapoint, hide where value is 0 (no data), mouseover shows tooltip and highlights country in Map
+	// on click update barchart
 	chart.selectAll("circle")
 		.data(data)
 			.enter()
@@ -101,7 +113,7 @@ function createScatterplot(data_index, variable) {
 			.attr("r", 5)
 			.attr("cx", function(d) {return x(d[2]); })
 			.attr("cy", function(d) {return y(d[y_index]); })
-			.style("display", function(d) { return d[2] == 0.0 || d[3] == 0.0  || d[4] == 0.0 ? "none" : null; })
+			.style("display", function(d) { return d[2] == 0.0 || d[y_index] == 0.0 ? "none" : null; })
 			.on('click', function(d) {
 				selectedCountry = d[0];
 				createBarchart(d[0], selectedYear);
@@ -119,4 +131,3 @@ function createScatterplot(data_index, variable) {
 				Map.updateChoropleth(updateCountry);
 			});
 };
-

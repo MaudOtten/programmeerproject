@@ -39,7 +39,7 @@ function createMap(data) {
 		// create legend for color coding 
 		legend: true,
 		
-		// fillcolors range per 5%, default color set to gray
+		// fillcolors range per 5%, default color set to light gray
 		fills: {
 			"< 5%": '#ddd1e8', // 0 - 5 % Female researchers
 			"< 10%": '#cdbcdd', // 5 - 10 % Female researchers
