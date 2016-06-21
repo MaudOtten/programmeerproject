@@ -3,7 +3,7 @@ Maud Ottenheijm, Programmeerproject 2016
 
 #### Doel
 
-Deze visualizatie bekijkt wereldwijd het percentage vrouwen werkzaam in het onderzoek. Het is bedoeld om een beeld te krijgen van de genderdiversiteit in het onderzoek vanuit verschillende invalshoeken, en te bepalen of en waar er werkelijk een trend richting genderbalans te zien is. 
+Deze visualizatie bekijkt wereldwijd het percentage vrouwen werkzaam in de wetenschap. Het is bedoeld om een beeld te krijgen van de genderdiversiteit in het onderzoek vanuit verschillende invalshoeken, en te bepalen of en waar er werkelijk een trend richting genderbalans te zien is. 
 De doelgroep voor deze visualizatie omvat mensen die onderzoek doen in gender & equality.
 
 #### Features
@@ -12,7 +12,8 @@ De doelgroep voor deze visualizatie omvat mensen die onderzoek doen in gender & 
 - Barchart: Op klikken van een bolletje in de scatterplot of een land in de landkaart wordt voor het desbetreffende land data laten zien per wetenschappelijke discipline. Een paarse bar laat het percentage vrouwen zien werkzaam in deze discipline (relatief aan het aantal mensen werkzaam in deze discipline). Een blauwe bar laat de grootte zien van deze discipline (% mensen) relatief aan de totale wetenschappelijke gemeenschap van dit land.
 
 Screenshot:
-
+[![](docs/screen_shot_top)]
+[![](docs/screen_shot_bottom)]
 
 #### Data bronnen / libraries
 Deze visualizatie is mogelijk gemaakt door onder genoemde bronnen. Alle rechten voor bovenstaande bronnen zijn voorbehouden aan de rechtmatige eigenaar.
