@@ -17,7 +17,7 @@ Screenshot:
 ![](doc/print_screen_bottom.png)
 
 #### Data bronnen / libraries
-Deze visualizatie is mogelijk gemaakt door onder genoemde bronnen. Alle rechten voor bovenstaande bronnen zijn voorbehouden aan de rechtmatige eigenaar.
+Deze visualizatie is mogelijk gemaakt door onder genoemde bronnen. Alle rechten zijn voorbehouden aan de rechtmatige eigenaar.
 
 Data:
 - [Unesco Institute for Statistics](http://www.uis.unesco.org/ScienceTechnology/Pages/gender-and-science.aspx)
