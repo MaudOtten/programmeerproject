@@ -18,12 +18,13 @@
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.2)',
         popupTemplate: function(geography, data) {
-          return data["female_in_research"] > 0 ? '<div class="hoverinfo"><strong>' + geography.properties.name + ':</strong><br><span>' + data["female_in_research"] + '% female researchers</span></div>' : '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>'
+          if (data == null) {return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>'}
+		  else {return data["female_in_research"] > 0 ? '<div class="hoverinfo"><strong>' + geography.properties.name + ':</strong><br><span>' + data["female_in_research"] + '% female researchers</span></div>' : '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>'};
 		},
         popupOnHover: true,
         highlightOnHover: true,
-        highlightBorderColor: 'rgba(0, 0, 0, 0.2)',
-		highlightFillColor: '#FF5454',
+        highlightBorderColor: 'firebrick',
+		highlightFillColor: this.fill,
         highlightBorderWidth: 2
     },
     bubblesConfig: {
@@ -144,14 +145,14 @@
 
           if ( options.highlightOnHover ) {
             var previousAttributes = {
-              'fill':  $this.style('fill'),
+              // 'fill':  $this.style('fill'),
               'stroke': $this.style('stroke'),
               'stroke-width': $this.style('stroke-width'),
               'fill-opacity': $this.style('fill-opacity')
             };
 
             $this
-              .style('fill', options.highlightFillColor)
+              // .style('fill', options.highlightFillColor)
               .style('stroke', options.highlightBorderColor)
               .style('stroke-width', options.highlightBorderWidth)
               .style('fill-opacity', options.highlightFillOpacity)

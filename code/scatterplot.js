@@ -52,7 +52,7 @@ function createScatterplot(data_index, variable) {
 		.orient("left");
 	
 	var tip = d3.tip()
-		.attr('class', 'scatterTip')
+		.attr('class', 'toolTip')
 		.offset([-10, 0])
 		.html(function(d) {
 			return "<strong>" + d[1] + ":</strong><br/><span style='color: rgb(189,167,210)'>Women in research: " 
@@ -77,6 +77,7 @@ function createScatterplot(data_index, variable) {
 			.attr("x", width - margin.right)
 			.attr("dy", ".71em")
 			.style("text-anchor", "end")
+			.style("text-decoration", "underline")
 			.text("Female researchers (% of total)");
 
 	chart.append("g")

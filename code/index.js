@@ -55,6 +55,14 @@ window.onload = function() {
 	createScatterplot(selectedYear, variable);
 	createMap(dataset[selectedYear]);
 	createBarchart(selectedCountry, selectedYear);
+	d3.select('#barchart').select('svg').append("g").attr("class", "barTitle")
+	.append("text")
+		.style("font-size", "14px")
+		.style("text-transform", "uppercase")
+		.style("fontcolor", "firebrick")
+		.attr("x", container_width / 2)
+		.attr("y", 40)
+		.text('Click a dot or country to look at country-specific data!');
 	
 	// initiate time slider
 	createSlider();

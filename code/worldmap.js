@@ -2,7 +2,10 @@
 	Name: Maud Ottenheijm
 	Student nr: 10641785
 	
-	...
+	This file contains the function called to draw a world map. Map is color coded for % of female researchers
+	per country in 2004. Years can be changed by a time slider, and map is updated accordingly through 
+	updateChoropleth in index.js. Library datamaps.all.js is used and adjusted for a custom tooltip and border
+	
 	
 	Part of final programming project 2016.
 */

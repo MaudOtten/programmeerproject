@@ -14,7 +14,7 @@ function createBarchart(countrycode, data_index){
 	d3.select("#barchart").selectAll("*").remove();
 	
 	// labels for x-axis
-	var labels = [["Nature Sc"], ["T & E *"], ["Agriculture"], ["Medical Sc"], ["Social Sc"], ["Humanities"], ["N.S."]];
+	var labels = [["Natural Sc"], ["T & E *"], ["Agriculture"], ["Medical Sc"], ["Social Sc"], ["Humanities"], ["N.S."]];
 	
 	// define margin, range and scale values
 	var margin = {top: 20, right: 20, bottom: 40, left: 50},
@@ -65,6 +65,14 @@ function createBarchart(countrycode, data_index){
 		.attr("dy", ".71em")
 		.attr("text-anchor", "start")
 		.text(function(d) {return d});
+		
+	chart.select("#x-axis").append("text")
+			.attr("y", 25)
+			.attr("x", width - margin.right)
+			.attr("dy", ".71em")
+			.style("text-anchor", "end")
+			.style("text-decoration", "underline")
+			.text("Scientific disciplines");
 	
 	// append y-axis
 	chart.append("g")
@@ -87,7 +95,7 @@ function createBarchart(countrycode, data_index){
 	
 	// create tooltip for bars
 	var tip_female = d3.tip()
-		.attr('class', 'barTip')
+		.attr('class', 'toolTip')
 		.offset([-10, 0])
 		.html(function(d, i) {
 			return "<strong>Female researchers in this field:</strong><br/><strong>" 
@@ -96,7 +104,7 @@ function createBarchart(countrycode, data_index){
 	
 	// create tooltip for bars
 	var tip_total = d3.tip()
-		.attr('class', 'barTip')
+		.attr('class', 'toolTip')
 		.offset([-10, 0])
 		.html(function(d) {
 			return "<strong>This field makes up</strong><br/><strong>" 

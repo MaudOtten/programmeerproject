@@ -14,33 +14,51 @@
 	<meta charset="utf-8">
 		<link rel="stylesheet" href="libs/d3.slider.css" /> 
 		<link rel="stylesheet" href="libs/WomenInScience.css" /> 
-		<script src = "libs/d3.js"></script>
-		<script src = "libs/topojson.min.js"></script>
-		<script src = "libs/datamaps.all.js"></script>
-		<script src = "libs/countrycodes.js"></script>
-		<script src = "libs/d3.slider.js"></script>
+		<script src="libs/d3.js"></script>
+		<script src="libs/topojson.min.js"></script>
+		<script src="libs/datamaps.all.js"></script>
+		<script src="libs/countrycodes.js"></script>
+		<script src="libs/d3.slider.js"></script>
 		<script src="libs/d3.tip.v0.6.3.js"></script>
 	</head>
 	<body>
-	<h1>Women in science: where do we find them?</h1>
-			
-				<div class = "container" id = "scatterplot">
+	<h1><span>Women in science: </span>where do we find them?</h1>
+			<p>This page contains data on women in research, where we can find a gender balance and how this developed over time. 
+			Previous data analysis shows a clear educational pipeline for women, having a dominant presence among Bachelor students, 
+			slightly less among Master students, but relatively absent in research careers. How might this cohere with more generic 
+			indicators of female roles in society and investment in education? Do smaller families or strategically spent money make 
+			women persue a career in science?</p>
+			<p 	style="font-style: italic">Clicking on a dot in the scatterplot or country in the worldmap will present data for a specific country, showing the percentage
+			of female researchers per scientific discipline in purple. The blue bars show the relative amount of researchers in this discipline.</p>
+				
+				<div class="container" id="scatterplot">
 				
 					<div class="button-wrap">	
-						<button id = "button-1" type="button" onclick="createScatterplot(selectedYear, &quot;birth_rate&quot;)">Birth Rate</button>
-						<button id = "button-2" type="button" onclick="createScatterplot(selectedYear, &quot;expences_education&quot;)">Education Expences</button>
+						<button id="button-1" type="button" onclick="createScatterplot(selectedYear, &quot;birth_rate&quot;)">Birth Rate</button>
+						<button id="button-2" type="button" onclick="createScatterplot(selectedYear, &quot;expences_education&quot;)">Education Expences</button>
 					</div>
 					
-					<div id = "graph"></div>
+					<div id="graph"></div>
 				</div>
 				
-				<div class = "container" id = "barchart"></div>
-				<div id = "slider"></div>
-				<div id = "worldmap"></div>
+				<div class="container" id="barchart"></div>
+				<div id="slider"></div>
+				<div id="worldmap"></div>
+			<div id="text-block"><h3>What do we see?</h3>
+				<ul>
+				<li>Throughout the years, the relative amount of female researchers has not drastically changed.</li>
+				<li>A high percentage of female researchers is mainly found in Eastern European and Asian countries.</li>
+				<li>Medical and social sciences and humanities are predominantly female disciplines and show an increase through the years.</li>
+				<li>Women seem to be more dominant in relatively smaller disciplines.</li>
+				<li>Expences on education do not seem to correlate with the percentage of female researchers. Birth rate however shows a negative
+				correlation in years with a high amount of data.</li></ul>
+			</div>
+				<div id="page-info">Made by Maud Ottenheijm, programmeerproject 2016<br/>
+				Data source: UNESCO Institute of Statistics, World Bank</div>
 	</body>
-	<script src = "../data/data_all.js" defer></script>
-	<script src = "barchart.js" defer></script>
-	<script src = "scatterplot.js" defer></script>
-	<script src = "worldmap.js" defer></script>
+	<script src="../data/data_all.js" defer></script>
+	<script src="barchart.js" defer></script>
+	<script src="scatterplot.js" defer></script>
+	<script src="worldmap.js" defer></script>
 	<script src="index.js" defer></script>
 </html>
