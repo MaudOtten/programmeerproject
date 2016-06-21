@@ -1,3 +1,14 @@
+/*
+	Name: Maud Ottenheijm
+	Student nr: 10641785
+	
+	This file includes most CSS code for the visualization Women In Science. Not included
+	is the CSS code for the slider from library d3.slider, this is included in d3.slider.css.
+	
+	Part of final programming project 2016.
+*/
+
+
 /* Body */
 body {
 	background-color: #FFFFFF;
@@ -68,48 +79,6 @@ button {
 	margin-top: 50px;
 }
 
-/* Time slider */
-#slider {
-	display: block;
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 40px;
-	margin-top: 40px;
-}
-
-/* Datamaps */
-#worldmap {
-	display: block;
-	width: 1000px;
-	height: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	position: relative;
-}
-	
-svg.datamap {
-	position:relative;
-	margin: auto;
-}
-	
-.datamaps-legend {
-	width: 120px;
-	height: 500px;
-	display: inline;
-	margin: 35px 0;
-}
-
-.datamaps-legend dt {
-	float: left;
-	margin: 0 3px 2px 2px;
-}
-
-.datamaps-legend dd {
-	float: right;
-	margin: 0 3px 2px 2px;
-}
-
 /* Axes */
 .axis path,
 .axis line {
@@ -169,4 +138,46 @@ svg.datamap {
 .bar:hover {
 	stroke: firebrick !important;
 	stroke-width: 3px;
+}
+
+/* Time slider */
+#slider {
+	display: block;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+
+/* Datamaps */
+#worldmap {
+	display: block;
+	width: 1000px;
+	height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+	
+svg.datamap {
+	position:relative;
+	margin: auto;
+}
+	
+.datamaps-legend {
+	width: 120px;
+	height: 500px;
+	display: inline;
+	margin: 35px 0;
+}
+
+.datamaps-legend dt {
+	float: left;
+	margin: 0 3px 2px 2px;
+}
+
+.datamaps-legend dd {
+	float: right;
+	margin: 0 3px 2px 2px;
 }
