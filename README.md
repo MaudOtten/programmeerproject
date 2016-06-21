@@ -14,21 +14,19 @@ De doelgroep voor deze visualizatie omvat mensen die onderzoek doen in gender & 
 Screenshot:
 
 
-#### Data sources
+#### Data bronnen / libraries
+Deze visualizatie is mogelijk gemaakt door onder genoemde bronnen. Alle rechten voor bovenstaande bronnen zijn voorbehouden aan de rechtmatige eigenaar.
 
-- Unesco Institute for Statistics
-- Worldbank
+Data:
+- [Unesco Institute for Statistics](http://www.uis.unesco.org/ScienceTechnology/Pages/gender-and-science.aspx)
+- [Worldbank](http://www.worldbank.org)
 
-#### Decomposing
+Libraries:
+- [D3](http://d3js.org)
+- [D3.slider](https://github.com/MasterMaps/d3-slider)
+- [D3.tip](https://github.com/Caged/d3-tip)
+- [Datamaps](http://datamaps.github.io/)
+- [Topojson](https://github.com/mbostock/topojson)
 
-Ten eerste moet de kaart correct worden gecodeerd in kleur obv de data. Deze data moet vervolgens adhv de slider aangepast worden. De scatterplot kan worden geplot adhv een eigen dataset en reageert alleen bij het klikken van een land. Tenslotte zal bij het klikken van een land de barchart geplot moeten worden met desbetreffende data. Ook deze zal bij aanpassen van de slider moeten worden aangepast.
-Voor deze visualisaties is minimaal D3 nodig.
-Een eventuele beperking van de beschikbare data is de inconsistentie van de beschikbaarheid van data over de tijdslijn. Dit kan de vertelling van de visualisaties enigszins in de weg zitten. Als dit een groot probleem blijkt, kan er gekozen worden voor een kortere tijdspan, wat de kans op volledige data vergroot.
-
-#### Eerdere visualizaties
-
-Een eerdere visualizatie die als inspiratie heeft gediend is afkomstig van Unesco Institute for Statistics (http://www.uis.unesco.org/_LAYOUTS/UNESCO/women-in-science/index.html#!lang=en). Deze visualisatie kijkt wereldbreed naar de verhouding tussen mannen en vrouwen in verschillende onderzoeksvelden en onderwijsniveaus. De visualisatie is mooi vormgegeven, maar bevat enorm veel data wat vrij chaotisch wordt laten zien. Hierdoor is het moeilijk om te vergelijken tussen landen. Concrete conclusies over een land zijn eveneens moeilijk te trekken. Mooi aan deze visualisatie vind ik wel de beschrijving van de 'educational pipeline'. Dit zou nog meer belicht kunnen worden door hier een wat verhalendere visual van te maken. Tenslotte bevat het geen tijdselement, wat ik erg interessant vind om te bekijken.
-
-#### Minimum Viable Product
-
-De MVP zal bestaan uit de wereldkaart, waar gekozen kan worden voor data van meerdere jaren (mbv een dropdown menu / checking boxes / slider). Bij klikken van een land wordt de barchart weergegeven, met data over dit land per vakgebied. Ook wordt een scatterplot laten zien waarop voor alle landen de data van het meest recente weergegeven jaar wordt weergegeven. Bij hover-over wordt de naam van het land weergegeven. Dit alles zal door een coherent verhaal omgeven worden en een geheel vormen.
+#### Licence
+Dit product behoort tot het publieke domein.
