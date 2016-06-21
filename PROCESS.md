@@ -59,3 +59,6 @@ Andere color range geprobeerd met groen. In de presentatie werd er geopperd toch
 
 # Week 4 Day 1
 Mijn definitieve color scale gekozen: paars! Groen werd teveel met bos/natuur/klimaat geassocieerd. Roze vond ik geen optie, maar stereotypes helpen wel bij onbewuste processen. Daarom een gulden middenweg gekozen met wit-paars. De bars van de bar chart hebben tooltips met de waarde erin. De landen lichten op als er over de corresponderende dot in de scatterplot gehoverd wordt (dit lukte vorige week niet, maar met een andere aanpak voor het terugveranderen van de kleur nu wel!). Ook de titel van de barchart met daarin de landnaam staat nu goed gepositioneerd.
+
+# Week 4, Day 2
+Mijn laatste dag! De opmaakt van de pagina even goed aangepakt, waardoor alles er nu een stuk schoner en moderner uitziet. Onderaan de pagina staat nu een lijstje met higlights, wat de kijker meer houvast (en hopelijk inzicht) geeft in de informatie in de visualisaties. Verder heb ik mijn report geschreven en de indeling van alle mappen op orde gemaakt. Alle files van comments voorzien en de laatste definitieve screenshots toegevoegd. KLAAR!
